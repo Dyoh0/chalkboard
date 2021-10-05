@@ -6,7 +6,7 @@
 ![wireframe]()
 
 # Site Map
-![sitemap]()
+![sitemap](https://github.com/Dyoh0/chalkboard/blob/main/designs/sitemap.png?raw=true)
 
 # Information
 
