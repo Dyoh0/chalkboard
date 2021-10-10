@@ -20,3 +20,5 @@ I learned how to create basic schematics for a website.  A wireframe is essentia
 I created the GitHub repo, drew the sitemap, edit course, course, assignment, create assignment, and admin pages, and put together most of the readme for D0.
 
 ## Minjae
+I came to realization that planning out your website via wireframing and sitemapping is an important step in creating a website. Before when i learned about wireframing and sitemapping, I was just doing my own projects in very unorganized way. I would have a very basic idea of what I want the website to look like and just tackle it head on. Throught this assignment, I have leanred wireframe is a draft for a website that represents the overall function and design while sitemap is list of pages that makes up the website. I found wiremapping to be very useful since it does give an overall layout.
+In this project, I drew and designed homepage, sign-up, search, create course and student roster.
