@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../CSS/header.css" />
+    <link rel="stylesheet" href="../CSS/createassignment.css" />
+    <title>Create Assignment</title>
+  </head>
+  <body>
+    <main>
+      <form>
+        <div class="labelinput">
+          <label for="inputcourseid">For Course:</label>
+          <input type="text" id="inputcourseid" name="inputcourseid" placeholder="Course ID" required />
+        </div>
+
+        <div class="labelinput">
+          <label for="inputassignmenttitle">Assignment Title:</label>
+          <input
+            type="text"
+            id="inputassignmenttitle"
+            name="inputassignmenttitle"
+            placeholder="Assignment Title"
+            required
+          />
+        </div>
+
+        <div class="labelinput">
+          <label for="inputdesc">Description:</label>
+          <textarea id="inputdesc" name="inputdesc" rows="4" cols="50" required></textarea>
+        </div>
+
+        <div id="questionform">
+          <div class="labelinput">
+            <label for="inputquestion">Question / Problem:</label>
+            <textarea id="inputquestion" name="inputquestion" rows="4" cols="50" required></textarea>
+          </div>
+
+          <div class="labelinput">
+            <label for="inputanswer">Answer (Instructor only):</label>
+            <input type="text" id="inputanswer" name="inputanswer" required />
+          </div>
+          <input type="button" id="buttondeletequestion" class="button" value="Delete Question" />
+        </div>
+
+        <input type="button" id="buttonaddquestion" class="button" value="Add Question" />
+
+        <div class="labelinput">
+          <label for="duedate">Due Date (optional):</label>
+          <input type="date" id="duedate" name="duedate" required />
+        </div>
+
+        <input type="submit" class="button" value="Create Assignment" />
+      </form>
+    </main>
+  </body>
+</html>
