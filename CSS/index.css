@@ -1,0 +1,24 @@
+nav {
+  background-color: darkgray;
+  font-size: 1.2em;
+  float: left;
+  margin-left: 2vw;
+  margin-top: 2vw;
+}
+
+nav li {
+  list-style: none;
+  margin: 10px;
+  padding-right: 25px;
+}
+
+main {
+  float: right;
+  margin-right: 40vw;
+}
+
+main li {
+  font-size: 2em;
+  border: 40px;
+  padding: 20px;
+}

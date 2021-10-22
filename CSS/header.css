@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  width: 100%;
+  background-color: blue;
+}
+
+#headerbar {
+  background-color: lightgray;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+#headerbar li {
+  display: inline-block;
+  padding: 20px 40px 20px 40px;
+  font-size: 1.4em;
+}
+
+#logo {
+  float: left;
+}
