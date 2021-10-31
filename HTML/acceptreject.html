@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+Name: Minjae Kim
+Date: 10.31.2021
+Course: CS 355
+This is the reject/accept page of our website. It provides basic html layouts of what reject/accept page will contain
+-->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td,
+    th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+  .studentTable, .instructorTable, .coursesTable, .database, .acceptrejectTable{
+    margin: 5%;
+  }
+  p{
+    color: red;
+  }
+
+  </style>
+
+  <body>
+    <div class="acceptrejectTable">
+      <table>
+        <p>Instructor Accept/Reject Page</p>
+        <tr>
+          <th>Student Name</th>
+          <th>Requested Course</th>
+          <th>Course ID</th>
+          <th>Accept/Reject</th>
+        </tr>
+        <tr>
+          <td>Minjae Kim</td>
+          <td>CS 355 </td>
+          <td>123456789</td>
+          <td><input type="button" class="button" value="Accept">
+              <input type="button" class="button" value="Reject">
+          </td>
+        </tr>
+        <tr>
+          <td>Daniel Yoh</td>
+          <td>CS 355</td>
+          <td>123456789</td>
+          <td><input type="button" class="button" value="Accept">
+              <input type="button" class="button" value="Reject">
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
