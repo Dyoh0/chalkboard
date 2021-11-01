@@ -7,14 +7,23 @@ This is the reject/accept page of our website. It provides basic html layouts of
 -->
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <link rel="stylesheet" href="../CSS/acceptreject.css" />
+    <link rel="stylesheet" href="../CSS/header.css" />
     <title>Accept Reject Page</title>
   </head>
   <body>
+    <header>
+      <ul id="headerbar">
+        <li id="logo"><a href="#">Logo</a></li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Search</a></li>
+        <li><a href="#">Courses</a></li>
+      </ul>
+    </header>
     <div class="acceptrejectTable">
+      <p>Instructor Accept/Reject Page</p>
       <table>
-        <p>Instructor Accept/Reject Page</p>
         <tr>
           <th>Student Name</th>
           <th>Requested Course</th>
@@ -23,18 +32,20 @@ This is the reject/accept page of our website. It provides basic html layouts of
         </tr>
         <tr>
           <td>Minjae Kim</td>
-          <td>CS 355 </td>
+          <td>CS 355</td>
           <td>123456789</td>
-          <td><input type="button" class="button" value="Accept">
-              <input type="button" class="button" value="Reject">
+          <td>
+            <input type="button" class="button" value="Accept" />
+            <input type="button" class="button" value="Reject" />
           </td>
         </tr>
         <tr>
           <td>Daniel Yoh</td>
           <td>CS 355</td>
           <td>123456789</td>
-          <td><input type="button" class="button" value="Accept">
-              <input type="button" class="button" value="Reject">
+          <td>
+            <input type="button" class="button" value="Accept" />
+            <input type="button" class="button" value="Reject" />
           </td>
         </tr>
       </table>

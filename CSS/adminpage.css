@@ -11,9 +11,13 @@ th {
   padding: 8px;
 }
 
-.studentTable, .instructorTable, .coursesTable, .database{
-margin: 5%;
+.studenttable,
+.instructortable,
+.coursestable,
+.database {
+  margin: 5%;
 }
-p{
-color: red;
+
+p {
+  color: red;
 }
