@@ -16,10 +16,9 @@ This is the selectedcourse page of our website. It provides basic html layouts o
   <body>
     <header>
       <ul id="headerbar">
-        <li id="logo"><a href="#">Logo</a></li>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Search</a></li>
-        <li><a href="#">Courses</a></li>
+        <li id="logo"><a href="https://dyoh0.github.io/chalkboard/HTML/index.html">Logo</a></li>
+        <li><a href="https://dyoh0.github.io/chalkboard/HTML/index.html">Home</a></li>
+        <li><a href="https://dyoh0.github.io/chalkboard/HTML/searchresults.html">Search</a></li>
       </ul>
     </header>
     <h1>Selected Course</h1>
@@ -29,12 +28,14 @@ This is the selectedcourse page of our website. It provides basic html layouts o
     </div>
 
     <div class="courseinfo">
-      <label for="courseName">Course Name:</label>
-      <br />
-      <label for="courseDescription">Course Description:</label>
-      <br />
+      <label for="coursename">Course Name:</label>
+      <input type="text" id="coursename" name="coursename" placeholder="Type in Course Name" />
+
+      <label for="coursedescription">Course Description:</label>
+      <input type="text" id="coursedescription" name="coursedescription" placeholder="Type in Course Description" />
+
       <label for="instructor">Instructor:</label>
-      <br />
+      <input type="text" id="instructor" name="instructor" placeholder="Type in Instructor" />
     </div>
 
     <input type="button" name="create" value="Create" />
