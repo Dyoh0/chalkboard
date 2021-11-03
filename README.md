@@ -26,12 +26,11 @@ For D1, I put together the HTML for the pages I created.
 
 ## Minjae
 
-###D0
+### D0
 I came to realization that planning out your website via wireframing and sitemapping is an important step in creating a website. Before when i learned about wireframing and sitemapping, I was just doing my own projects in very unorganized way. I would have a very basic idea of what I want the website to look like and just tackle it head on. Throught this assignment, I have leanred wireframe is a draft for a website that represents the overall function and design while sitemap is list of pages that makes up the website. I found wiremapping to be very useful since it does give an overall layout.
 In this project, I drew and designed homepage, sign-up, search, create course and student roster.
 
-###D1
-
+### D1
 Creating an HTML complete design and layout of our website for D0 was definitely more straight forward and convenient for me to take reference and follow. Through this assignment, I have leanred the important of having a design structure to follow instead of just coding on top of my head. It feels like of like following a rough draft
 when writing an essay. I would say writing the HTML code was much easier than actually trying to design the website because all I had to really do is follow the layout.
 For this assignment, I created the pages for student roster, create course, edit course, selected course, admin view, and accept/reject page.
