@@ -1,3 +1,6 @@
+# Site Link
+https://dyoh0.github.io/chalkboard/HTML/index.html
+
 # Wireframes
 ![wireframe1](https://github.com/Dyoh0/chalkboard/blob/main/designs/wireframes1.png?raw=true)
 ![wireframe2](https://github.com/Dyoh0/chalkboard/blob/main/designs/wireframes2.png?raw=true)
@@ -19,6 +22,7 @@ The contributors are Daniel Yoh and Minjae Kim.
 ## Daniel
 I learned how to create basic schematics for a website.  A wireframe is essentially simple blueprints that provide visual representations for a site and its pages and functions, with labels for quickly explaining various modules.  I also learned that a sitemap is a map of all pages for a website, showing their relationships to convey how to get from one page to another.  Usually, the home page is the first page that gets worked on when planning a website.  The layout of a page should fit the page's function, but there should be some consistency in all pages, such as a common header, color scheme, and/or overall vibe.  These blueprints should be able to show the basic ideas of a site's structure and its pages, and their general purposes.  I should also be sure that the wireframes account for small screen sizes like mobile devices.  Overall, I learned how to create a wireframe and a sitemap to create a website.  
 I created the GitHub repo, drew the sitemap, edit course, course, assignment, create assignment, and admin pages, and put together most of the readme for D0.
+For D1, I put together the HTML for the pages I created.
 
 ## Minjae
 I came to realization that planning out your website via wireframing and sitemapping is an important step in creating a website. Before when i learned about wireframing and sitemapping, I was just doing my own projects in very unorganized way. I would have a very basic idea of what I want the website to look like and just tackle it head on. Throught this assignment, I have leanred wireframe is a draft for a website that represents the overall function and design while sitemap is list of pages that makes up the website. I found wiremapping to be very useful since it does give an overall layout.
