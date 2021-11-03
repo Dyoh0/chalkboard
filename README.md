@@ -20,8 +20,12 @@ The contributors are Daniel Yoh and Minjae Kim.
 # Other
 
 ## Daniel
+
+### D0
 I learned how to create basic schematics for a website.  A wireframe is essentially simple blueprints that provide visual representations for a site and its pages and functions, with labels for quickly explaining various modules.  I also learned that a sitemap is a map of all pages for a website, showing their relationships to convey how to get from one page to another.  Usually, the home page is the first page that gets worked on when planning a website.  The layout of a page should fit the page's function, but there should be some consistency in all pages, such as a common header, color scheme, and/or overall vibe.  These blueprints should be able to show the basic ideas of a site's structure and its pages, and their general purposes.  I should also be sure that the wireframes account for small screen sizes like mobile devices.  Overall, I learned how to create a wireframe and a sitemap to create a website.  
 I created the GitHub repo, drew the sitemap, edit course, course, assignment, create assignment, and admin pages, and put together most of the readme for D0.
+
+### D1
 For D1, I put together the HTML for the pages I created.
 
 ## Minjae
