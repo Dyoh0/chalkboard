@@ -10,24 +10,27 @@ This is the login page of our website that allows students or instructors to log
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../CSS/login.css" />
     <title>Login Page</title>
   </head>
   <body>
     <h1>Login</h1>
     <form>
       <label for="email">Email:</label>
-      <input type="email" name="email" id="email" placeholder="Email Address" required />
+      <input type="email" name="email" id="email" placeholder="Email Address" class="textinput" required />
 
       <label for="password">Password:</label>
-      <input type="password" name="password" id="password" placeholder="Password" required />
+      <input type="password" name="password" id="password" placeholder="Password" class="textinput" required />
       <p>Are you a...</p>
 
-      <input type="radio" id="student" name="accounttype" value="Student" required />
-      <label for="student">Student</label>
-      <input type="radio" id="instructor" name="accounttype" value="Instructor" required />
-      <label for="instructor">Instructor</label>
+      <span id="stuinstrucchoice">
+        <input type="radio" id="student" name="accounttype" value="Student" required />
+        <label for="student" class="stuinstrucchoice">Student</label>
+        <input type="radio" id="instructor" name="accounttype" value="Instructor" required />
+        <label for="instructor" class="stuinstrucchoice">Instructor</label>
+      </span>
 
-      <input type="submit" value="Sign in" />
+      <input type="submit" value="Sign in" class="button" />
       <p>
         Or...
         <a href="https://dyoh0.github.io/chalkboard/HTML/signup.html">Sign up</a>
