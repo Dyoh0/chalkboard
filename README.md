@@ -1,5 +1,5 @@
 # Site Link
-https://dyoh0.github.io/chalkboard/HTML/index.html
+https://dyoh0.github.io/chalkboard/HTML/login.html
 
 # Wireframes
 ![wireframe1](https://github.com/Dyoh0/chalkboard/blob/main/designs/wireframes1.png?raw=true)
