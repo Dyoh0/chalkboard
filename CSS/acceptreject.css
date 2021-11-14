@@ -11,10 +11,14 @@ th {
   padding: 8px;
 }
 
-.studenttable, .instructortable, .coursestable, .database, .acceptrejecttable{
-margin: 5%;
+.studenttable,
+.instructortable,
+.coursestable,
+.database,
+.acceptrejecttable {
+  margin: 5%;
 }
 
-p{
-color: red;
+p {
+  color: rgb(83, 0, 0);
 }

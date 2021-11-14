@@ -28,29 +28,42 @@ This is the editcourse page of our website. It provides basic html layouts of wh
       </ul>
     </header>
     <h1>Edit Course</h1>
-    <ul class="no-bullets">
-      <li>
-        <input type="checkbox" />
-        Course 1
-      </li>
-      <li>
-        <input type="checkbox" />
-        Course 2
-      </li>
-      <li>
-        <input type="checkbox" />
-        Course 3
-      </li>
-      <li>
-        <input type="checkbox" />
-        Course 4
-      </li>
-    </ul>
+    <form>
+      <ul class="no-bullets">
+        <!-- <span id="stuinstrucchoice">
+        <input type="radio" id="student" name="accounttype" value="Student" required />
+        <label for="student" class="stuinstrucchoice">Student</label>
+        <input type="radio" id="instructor" name="accounttype" value="Instructor" required />
+        <label for="instructor" class="stuinstrucchoice">Instructor</label>
+      </span> -->
+        <li>
+          <input type="radio" id="course1" name="coursechoice" value="Course1" required />
+          <label for="course1" class="courselabels">Course 1</label>
+        </li>
+        <li>
+          <input type="radio" id="course2" name="coursechoice" value="Course2" required />
+          <label for="course2" class="courselabels">Course 2</label>
+        </li>
+        <li>
+          <input type="radio" id="course3" name="coursechoice" value="Course3" required />
+          <label for="course3" class="courselabels">Course 3</label>
+        </li>
+        <li>
+          <input type="radio" id="course4" name="coursechoice" value="Course4" required />
+          <label for="course4" class="courselabels">Course 4</label>
+        </li>
+      </ul>
 
-    <div class="buttons">
-      <input type="button" name="Edit" value="Edit" />
-      <input type="button" name="Delete" value="Delete" />
-      <input type="button" name="Leave" value="Leave" />
-    </div>
+      <div class="buttons">
+        <input type="button" name="Edit" value="Edit" />
+        <p>
+          <a href="https://dyoh0.github.io/chalkboard/HTML/selectedcourse.html">
+            (Temporary link: 'Edit' takes you to selected course)
+          </a>
+        </p>
+        <input type="button" name="Delete" value="Delete" />
+        <input type="button" name="Leave" value="Leave" />
+      </div>
+    </form>
   </body>
 </html>
