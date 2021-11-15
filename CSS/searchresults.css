@@ -1,0 +1,20 @@
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 2%;
+}
+.list{
+  margin: 1%;
+}
+form{
+  text-align: left;
+}
+#searchbar{
+  margin: 2%;
+}
+.submitbutton{
+  margin-left: 3%;
+}
+img{
+  margin-top: 3%;
+}
