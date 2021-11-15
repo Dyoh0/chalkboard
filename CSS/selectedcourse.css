@@ -1,8 +1,17 @@
-.coursename, .coursedescription, .instructor {
+.coursename,
+.coursedescription,
+.instructor {
   margin: auto;
   width: 40%;
   padding: 1%;
 }
-h1, .display{
+h1,
+.display {
   text-align: center;
+}
+.editbutton {
+  margin: auto;
+  display: block;
+  padding: 10px;
+  font-size: 1.2em;
 }

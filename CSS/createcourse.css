@@ -1,12 +1,21 @@
-h1{
+h1 {
   text-align: center;
 }
 
-#coursediv, #instructordiv, #coursedesc {
+#coursediv,
+#instructordiv,
+#coursedesc {
   margin: auto;
   width: 40%;
   padding: 1%;
 }
-#coursedescription{
+#coursedescription {
   margin-top: 2%;
+}
+
+.button {
+  margin: auto;
+  display: block;
+  padding: 10px;
+  font-size: 1.2em;
 }
