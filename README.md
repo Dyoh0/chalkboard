@@ -47,7 +47,7 @@ Create Assignment page allows the instructor to create an assignment for the cla
 
 ## Create Course Page
 An instructor is able to create a course he or she is willing to teach. There are three fields that must be field, course name, instructor name, and description. After everything has been filled, press confirm to create a new course.      
-**Link - https://dyoh0.github.io/chalkboard/HTML/createassignment.html**
+**Link - https://dyoh0.github.io/chalkboard/HTML/createcourse.html**
 
 
 ## Edit Course Page
