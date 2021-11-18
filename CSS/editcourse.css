@@ -1,16 +1,25 @@
-form{
-  margin-left: 1%;
+form {
+  margin: auto;
+  width: 50%;
 }
+
 ul.no-bullets {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
-li{
-  padding: 1%;
+
+li {
+  padding: 1vw;
   text-align: left;
 }
 
-input.buttons{
-  margin: 10%;
+label {
+  font-size: 1.5em;
+}
+
+.buttons input {
+  margin: 25px;
+  font-size: 1.2em;
+  padding: 8px;
 }

@@ -17,6 +17,7 @@ th {
 .database,
 .acceptrejecttable {
   margin: 5%;
+  overflow-x: auto;
 }
 
 p {

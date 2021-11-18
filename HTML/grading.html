@@ -16,20 +16,21 @@ This is the grading assignment page of our website, only available to instructor
   </head>
   <body>
     <header>
+      <a href="https://dyoh0.github.io/chalkboard/HTML/index.html" id="logo">
+        <img src="https://dyoh0.github.io/chalkboard/img/chalkboard.png" alt="A chalkboard" width="55" />
+      </a>
+      <label for="hamburger">&#9776;</label>
+      <input type="checkbox" id="hamburger" />
+
       <ul id="headerbar">
-        <li id="logo">
-          <a href="https://dyoh0.github.io/chalkboard/HTML/index.html">
-            <img src="../img/chalkboard.png" alt="A chalkboard" width="55" />
-          </a>
-        </li>
         <li><a href="https://dyoh0.github.io/chalkboard/HTML/index.html">Home</a></li>
         <li><a href="https://dyoh0.github.io/chalkboard/HTML/searchresults.html">Search</a></li>
         <li><a href="https://dyoh0.github.io/chalkboard/HTML/login.html">Log Out</a></li>
       </ul>
     </header>
+
     <h1>Assignment 1</h1>
-    <div class="bigpara">
-    <p>
+    <p class="assignmentdesc">
       Description. Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium ipsum fugiat itaque impedit
       quod. Cum aliquam iusto officia accusamus repellat quo fugiat vel sequi aliquid, voluptas rem impedit deserunt
       esse dicta iure pariatur sapiente beatae aut iste fuga? Quaerat, quas accusamus. Iste unde nostrum exercitationem
@@ -42,7 +43,6 @@ This is the grading assignment page of our website, only available to instructor
       eligendi placeat adipisci beatae ullam explicabo eius. Deserunt blanditiis minus provident quod quaerat suscipit
       neque quibusdam.
     </p>
-        </div>
     <form action="#">
       <div class="questionanswermodule">
         <p class="questiontext">
@@ -55,7 +55,7 @@ This is the grading assignment page of our website, only available to instructor
             According to all known laws of aviation, there is no way a bee should be able to fly.
           </span>
         </p>
-        <span class="fileattach">(File attachment)</span>  <input type="file" id="filesubmit" name="filesubmit">
+        <span class="fileattach">(File attachment)</span>
         <p class="answerkey">
           Answer Key:
           <span class="answerkeyspan">We're no strangers to love.</span>
@@ -67,13 +67,15 @@ This is the grading assignment page of our website, only available to instructor
           <label for="incorrect" class="correcttypeclass">Incorrect</label>
         </span>
       </div>
-      <div class="">
-      <label for="feedback">Feedback:</label>
-      <textarea id="feedback" name="feedback" rows="4" cols="50"></textarea><br>
-      <label for="grade">Grade:</label>
-      <input type="number" id="grade" name="grade" min="0" max="100" required />
-      <input type="submit" id="submit" name="submit"><br>
-      <button type="button">Reopen</button>
+      <div class="feedback">
+        <label for="feedback">Feedback:</label>
+        <textarea id="feedback" name="feedback" rows="4" cols="50"></textarea>
+      </div>
+      <div class="grade">
+        <label for="grade">Grade:</label>
+        <input type="number" id="grade" name="grade" min="0" max="100" required />
+        <input type="submit" id="submit" name="submit" class="button" />
+        <button type="button" class="button">Reopen</button>
       </div>
     </form>
   </body>

@@ -16,57 +16,57 @@ This is the studentroster page of our website. It provides basic html layouts of
   </head>
   <body>
     <header>
+      <a href="https://dyoh0.github.io/chalkboard/HTML/index.html" id="logo">
+        <img src="https://dyoh0.github.io/chalkboard/img/chalkboard.png" alt="A chalkboard" width="55" />
+      </a>
+      <label for="hamburger">&#9776;</label>
+      <input type="checkbox" id="hamburger" />
+
       <ul id="headerbar">
-        <li id="logo">
-          <a href="https://dyoh0.github.io/chalkboard/HTML/index.html">
-            <img src="../img/chalkboard.png" alt="A chalkboard" width="55" />
-          </a>
-        </li>
         <li><a href="https://dyoh0.github.io/chalkboard/HTML/index.html">Home</a></li>
         <li><a href="https://dyoh0.github.io/chalkboard/HTML/searchresults.html">Search</a></li>
         <li><a href="https://dyoh0.github.io/chalkboard/HTML/login.html">Log Out</a></li>
       </ul>
     </header>
+
     <div class="center1">
+      <h1>Student Roster</h1>
 
-    <h1>Student Roster</h1>
+      <label for="course">Select course:</label>
+      <select name="course" id="course">
+        <option value="volvo">CSCI355</option>
+      </select>
+      <button type="button">View</button>
 
-    <label for="course">Select course:</label>
-    <select name="course" id="course">
-      <option value="volvo">CSCI355</option>
-    </select>
-    <button type="button">View</button>
-
-    <h2>
-      Displaying roster for course
-      <span id="coursename">CSCI355</span>
-      :
-    </h2>
-    <div class="roster">
-      <table class="center">
-        <tr>
-          <th>Last Name</th>
-          <th>First Name</th>
-
-        </tr>
-        <tr>
-          <td>Jones</td>
-          <td>Alex</td>
-        </tr>
-        <tr>
-          <td>Johnson</td>
-          <td>Alex</td>
-        </tr>
-        <tr>
-          <td>Doe</td>
-          <td>John</td>
-        </tr>
-        <tr>
-          <td>Smith</td>
-          <td>Michael</td>
-        </tr>
-      </table>
-    </div>
+      <h2>
+        Displaying roster for course
+        <span id="coursename">CSCI355</span>
+        :
+      </h2>
+      <div class="roster">
+        <table class="center">
+          <tr>
+            <th>Last Name</th>
+            <th>First Name</th>
+          </tr>
+          <tr>
+            <td>Jones</td>
+            <td>Alex</td>
+          </tr>
+          <tr>
+            <td>Johnson</td>
+            <td>Alex</td>
+          </tr>
+          <tr>
+            <td>Doe</td>
+            <td>John</td>
+          </tr>
+          <tr>
+            <td>Smith</td>
+            <td>Michael</td>
+          </tr>
+        </table>
+      </div>
     </div>
   </body>
 </html>

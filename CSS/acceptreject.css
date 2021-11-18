@@ -17,4 +17,13 @@ th {
 .database,
 .acceptrejecttable {
   margin: 5%;
+  overflow-x: auto;
+}
+
+.button {
+  margin: 5px;
+}
+
+tr:nth-child(even) {
+  background-color: #e4e4e4;
 }

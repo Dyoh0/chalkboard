@@ -10,11 +10,10 @@ body {
 
 header {
   width: 100%;
-  background-color: blue;
+  background-color: lightgray;
 }
 
 #headerbar {
-  background-color: lightgray;
   text-align: center;
   margin: 0;
   padding-left: 0;
@@ -30,4 +29,44 @@ header {
 
 #logo {
   float: left;
+  padding-top: 14px;
+  padding-left: 15px;
+}
+
+header label,
+#hamburger {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  #logo {
+    display: inline-block;
+    float: none;
+    margin: 0px;
+    padding-top: 5px;
+  }
+
+  #headerbar li {
+    box-sizing: border-box;
+    display: block;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    background-color: rgb(173, 173, 173);
+  }
+
+  header label {
+    display: block;
+    float: right;
+    background: darkgray;
+    font-size: 1.2em;
+    padding: 10px;
+  }
+
+  #headerbar {
+    display: none;
+    padding-right: 0;
+  }
+
+  header input:checked ~ #headerbar {
+    display: block;
+  }
 }

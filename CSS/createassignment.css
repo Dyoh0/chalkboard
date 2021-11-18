@@ -11,5 +11,20 @@ main {
 .button {
   margin: auto;
   display: grid;
-  margin-bottom: 15px;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  padding: 10px;
+  font-size: 1.1em;
+}
+
+@media only screen and (max-width: 990px) {
+  textarea {
+    width: 20em;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  textarea {
+    width: 15em;
+  }
 }

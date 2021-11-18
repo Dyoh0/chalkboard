@@ -9,6 +9,7 @@ h1 {
   width: 40%;
   padding: 1%;
 }
+
 #coursedescription {
   margin-top: 2%;
 }
@@ -18,4 +19,16 @@ h1 {
   display: block;
   padding: 10px;
   font-size: 1.2em;
+}
+
+@media only screen and (max-width: 990px) {
+  textarea {
+    width: 22em;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  textarea {
+    width: 15em;
+  }
 }
