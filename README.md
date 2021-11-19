@@ -100,6 +100,9 @@ I created the GitHub repo, drew the sitemap, edit course, course, assignment, cr
 ### D1
 For D1, I put together the HTML for the pages I created.
 
+### D2
+For D2, I did the CSS for some pages and added responsiveness to others.
+
 ## Minjae
 
 ### D0
