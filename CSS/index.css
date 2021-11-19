@@ -1,9 +1,29 @@
-nav {
-  background-color: var(--main-color);
-  font-size: 1.2em;
+a:link {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: inherit;
+}
+
+#imgcontainer {
+  background-image: url(../img/notepadimg.png);
+  background-size: 265px 100%;
+  background-repeat: no-repeat;
   float: left;
   margin-left: 2vw;
   margin-top: 2vw;
+}
+
+nav {
+  font-size: 1.2em;
+  margin-top: 3vw;
+  border: 1px solid rgb(200, 200, 200);
+  width: 263px;
 }
 
 nav li {
@@ -13,8 +33,8 @@ nav li {
 }
 
 main {
-  float: right;
-  margin-right: 40vw;
+  margin-top: 3vw;
+  margin-left: 30vw;
 }
 
 main li {
@@ -24,33 +44,49 @@ main li {
   padding: 20px;
 }
 
-@media screen and (max-width: 1520px){
+@media screen and (max-width: 1520px) {
   main {
-    margin-right: 30vw;
+    margin-left: 40vw;
   }
 }
 
-@media screen and (max-width: 1300px){
+@media screen and (max-width: 1120px) {
   main {
-    margin-right: 20vw;
+    margin-left: 35vw;
+    font-size: 0.9em;
+  }
+
+  #imgcontainer {
+    padding-top: 18px;
   }
 }
 
-@media screen and (max-width: 900px){
-  nav {
-    display: block;
-    float: none;
-    width: 300px;
-    }
-    
+@media screen and (max-width: 910px) {
   main {
-    float: none;
-    margin-left: 50px;
-    display: block;
-    font-size: .8em;
+    margin-left: 45vw;
+    font-size: 0.8em;
+  }
+}
+
+@media only screen and (max-width: 630px) {
+  #imgcontainer {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 25px;
+    padding-top: 11px;
   }
 
-  #indexchalkboard {
-    width: 200px;
+  main {
+    float: none;
+    margin-left: 15vw;
+  }
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  #courselist {
+    font-size: 0.8em;
+    padding-left: 0;
   }
 }
