@@ -11,18 +11,20 @@ will display results matching their search string.
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../CSS/header.css" />
     <link rel="stylesheet" href="../CSS/searchresults.css" />
+    <link rel="stylesheet" href="../CSS/header.css" />
     <title>Search Results</title>
   </head>
+
   <body>
     <header>
+      <a href="https://dyoh0.github.io/chalkboard/HTML/index.html" id="logo">
+        <img src="https://dyoh0.github.io/chalkboard/img/chalkboard.png" alt="A chalkboard" width="55" />
+      </a>
+      <label for="hamburger">&#9776;</label>
+      <input type="checkbox" id="hamburger" />
+
       <ul id="headerbar">
-        <li id="logo">
-          <a href="https://dyoh0.github.io/chalkboard/HTML/index.html">
-            <img src="../img/chalkboard.png" alt="A chalkboard" width="55" />
-          </a>
-        </li>
         <li><a href="https://dyoh0.github.io/chalkboard/HTML/index.html">Home</a></li>
         <li><a href="https://dyoh0.github.io/chalkboard/HTML/searchresults.html">Search</a></li>
         <li><a href="https://dyoh0.github.io/chalkboard/HTML/login.html">Log Out</a></li>
@@ -30,6 +32,7 @@ will display results matching their search string.
     </header>
 
     <div id="searchbar">
+      <img src="../img/magnifying-glass-ga7dc5fc0e_640.jpg" alt="A magnifying glass" width="25" />
       <input type="text" id="searchterm" placeholder="Search for Courses" />
       <button type="submit" value="searchbutton">Search</button>
     </div>
@@ -42,24 +45,25 @@ will display results matching their search string.
       <form>
         <ul>
           <li class="list">
-        <input type="checkbox" id="courseresult1" name="courseresult1" value="courseresult1" />
-        <label for="courseresult1">
-          Physics I
-          <span class="classdesc">Introductory course on basic physics.</span>
-        </label>
-          </li>
-          <li class="list">
-        <input type="checkbox" id="courseresult2" name="courseresult2" value="courseresult2" />
-        <label for="courseresult2">
-          Astrophysics
-          <span class="classdesc">Course on the physics of space.</span>
-        </label>
-      </li>
-      </ul>
-        <button type="submit" class="submitbutton" value="enrolledcourses">Enroll</button>
+            <div class="classchoice">
+              <input type="checkbox" id="courseresult1" name="courseresult1" value="courseresult1" />
+              <label for="courseresult1">
+                Physics I
+                <span class="classdesc">Introductory course on basic physics.</span>
+              </label>
+            </div>
 
+            <div class="classchoice">
+              <input type="checkbox" id="courseresult2" name="courseresult2" value="courseresult2" />
+              <label for="courseresult2">
+                Astrophysics
+                <span class="classdesc">Course on the physics of space.</span>
+              </label>
+            </div>
+          </li>
+        </ul>
+        <button type="submit" class="submitbutton" value="enrolledcourses">Enroll</button>
       </form>
-      <img src="../img/magnifying-glass-ga7dc5fc0e_640.jpg" alt="A magnifying glass" width="150" />
     </main>
   </body>
 </html>
