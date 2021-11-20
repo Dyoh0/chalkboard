@@ -113,3 +113,6 @@ In this project, I drew and designed homepage, sign-up, search, create course an
 Creating an HTML complete design and layout of our website for D0 was definitely more straight forward and convenient for me to take reference and follow. Through this assignment, I have leanred the important of having a design structure to follow instead of just coding on top of my head. It feels like of like following a rough draft
 when writing an essay. I would say writing the HTML code was much easier than actually trying to design the website because all I had to really do is follow the layout.
 For this assignment, I created the pages for student roster, create course, edit course, selected course, admin view, and accept/reject page.
+
+### D2
+Created CSS for some of the pages and added feature lists for the each webpages in README.md
