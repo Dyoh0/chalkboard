@@ -50,6 +50,14 @@ header label,
   display: none;
 }
 
+form button {
+  background: none;
+  border: none;
+  padding: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 768px) {
   #logo {
     display: inline-block;
