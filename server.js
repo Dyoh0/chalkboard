@@ -49,21 +49,20 @@ passport.use(new localstrategy({
     if (err) return done(err);
     if (!user) return done(null, false, { message: 'Account does not exist.' });
     const usertype = req.body.accounttype;
-    console.log("user usertype:", user, usertype);
+    console.log("user:", user, "usertype:", usertype);
     if (usertype != user.accounttype) {
       return done(null, false, { message: "Wrong account type." })
     };
     bcrypt.compare(password, user.password, function(err, res) {
       if (err) return done(err);
       if (res === false) return done(null, false, { message: 'Incorrect password.' });
-
       return done(null, user);
     });
   });
 }));
 
 app.get('/', loggedin, (req, res) => {
-  res.render('index.ejs', { name: req.user.firstname });
+  res.render('index.ejs', { accounttype: req.user.accounttype });
   // res.render('index.ejs', { name: "Whee" });
 })
 
@@ -72,7 +71,8 @@ app.get('/', loggedin, (req, res) => {
 // })
 
 app.get('/adminpage', loggedin, (req, res) => {
-  res.render('adminpage.ejs');
+  if (req.user.accounttype != "Admin") res.redirect('/')
+  else res.render('adminpage.ejs');
 })
 
 // app.get('/assignment', loggedin, (req, res) => {

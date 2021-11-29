@@ -18,21 +18,23 @@ This is the homepage and index.html file of our website.  It displays a list of 
     <header>
     <%- include('./partials/header') %>
     </header>
-    <div id="imgcontainer">
-      <nav>
-        <ul id="instructorlist">
-          <li><a href="https://dyoh0.github.io/chalkboard/HTML/index.html">Home</a></li>
-          <li><a href="https://dyoh0.github.io/chalkboard/HTML/searchresults.html">Search</a></li>
-          <li><a href="https://dyoh0.github.io/chalkboard/HTML/createcourse.html">Create Course</a></li>
-          <li><a href="https://dyoh0.github.io/chalkboard/HTML/createassignment.html">Create Assignment</a></li>
-          <li><a href="https://dyoh0.github.io/chalkboard/HTML/editcourse.html">Edit Course</a></li>
-          <li><a href="https://dyoh0.github.io/chalkboard/HTML/studentroster.html">Student Roster</a></li>
-          <li><a href="https://dyoh0.github.io/chalkboard/HTML/acceptreject.html">Enrollment Requests</a></li>
-          <li><a href="https://dyoh0.github.io/chalkboard/HTML/gradelist.html">Grade Assignments</a></li>
-          <li><a href="/adminpage">Admin View</a></li>
-        </ul>
-      </nav>
-    </div>
+    <% if (accounttype == "Instructor") { %>
+      <div id="imgcontainer">
+        <nav>
+          <ul id="instructorlist">
+            <li><a href="https://dyoh0.github.io/chalkboard/HTML/index.html">Home</a></li>
+            <li><a href="https://dyoh0.github.io/chalkboard/HTML/searchresults.html">Search</a></li>
+            <li><a href="https://dyoh0.github.io/chalkboard/HTML/createcourse.html">Create Course</a></li>
+            <li><a href="https://dyoh0.github.io/chalkboard/HTML/createassignment.html">Create Assignment</a></li>
+            <li><a href="https://dyoh0.github.io/chalkboard/HTML/editcourse.html">Edit Course</a></li>
+            <li><a href="https://dyoh0.github.io/chalkboard/HTML/studentroster.html">Student Roster</a></li>
+            <li><a href="https://dyoh0.github.io/chalkboard/HTML/acceptreject.html">Enrollment Requests</a></li>
+            <li><a href="https://dyoh0.github.io/chalkboard/HTML/gradelist.html">Grade Assignments</a></li>
+            <li><a href="/adminpage">Admin View</a></li>
+          </ul>
+        </nav>
+      </div>
+    <% } %>
     <main>
       <h1>Enrolled Courses</h1>
       <ul id="courselist">
