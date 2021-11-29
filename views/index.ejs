@@ -16,19 +16,7 @@ This is the homepage and index.html file of our website.  It displays a list of 
   </head>
   <body>
     <header>
-      <a href="https://dyoh0.github.io/chalkboard/HTML/index.html" id="logo">
-        <img src="https://dyoh0.github.io/chalkboard/img/chalkboard.png" alt="A chalkboard" width="55" />
-      </a>
-      <label for="hamburger">&#9776;</label>
-      <input type="checkbox" id="hamburger" />
-
-      <ul id="headerbar">
-        <li><a href="https://dyoh0.github.io/chalkboard/HTML/index.html">Home</a></li>
-        <li><a href="https://dyoh0.github.io/chalkboard/HTML/searchresults.html">Search</a></li>
-        
-        <li><form action = "/logout?_method=DELETE" method="POST">
-<button type = "submit">Log out </button></form></li>
-      </ul>
+    <%- include('./partials/header') %>
     </header>
     <div id="imgcontainer">
       <nav>
@@ -41,7 +29,7 @@ This is the homepage and index.html file of our website.  It displays a list of 
           <li><a href="https://dyoh0.github.io/chalkboard/HTML/studentroster.html">Student Roster</a></li>
           <li><a href="https://dyoh0.github.io/chalkboard/HTML/acceptreject.html">Enrollment Requests</a></li>
           <li><a href="https://dyoh0.github.io/chalkboard/HTML/gradelist.html">Grade Assignments</a></li>
-          <li><a href="https://dyoh0.github.io/chalkboard/HTML/adminpage.html">Admin View</a></li>
+          <li><a href="/adminpage">Admin View</a></li>
         </ul>
       </nav>
     </div>

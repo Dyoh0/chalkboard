@@ -103,6 +103,9 @@ For D1, I put together the HTML for the pages I created.
 ### D2
 For D2, I did the CSS for some pages and added responsiveness to others.
 
+### D3
+For D3, I implemented the signup, login, and logout functionalities.
+ 
 ## Minjae
 
 ### D0

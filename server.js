@@ -71,9 +71,9 @@ app.get('/', loggedin, (req, res) => {
 //   // res.render('acceptreject.ejs');
 // })
 
-// app.get('/adminpage', loggedin, (req, res) => {
-//   // res.render('adminpage.ejs');
-// })
+app.get('/adminpage', loggedin, (req, res) => {
+  res.render('adminpage.ejs');
+})
 
 // app.get('/assignment', loggedin, (req, res) => {
 //   // res.render('assignment.ejs');
@@ -116,15 +116,15 @@ app.get('/', loggedin, (req, res) => {
 //   // res.render('index.ejs', { name: "Whee" });
 // })
 
-app.get('/login', checkNotAuthenticated, (req, res) => {
+app.get('/login', loggedout, (req, res) => {
   res.render('login.ejs');
 })
 
-app.get('/signup', checkNotAuthenticated, (req, res) => {
+app.get('/signup', loggedout, (req, res) => {
   res.render('signup.ejs');
 })
 
-app.post('/signup', checkNotAuthenticated, async (req, res) => {
+app.post('/signup', loggedout, async (req, res) => {
   const exists = await Person.exists({ email: req.body.email });
   console.log("Exists:", exists);
   if (exists) {
@@ -150,7 +150,7 @@ app.post('/signup', checkNotAuthenticated, async (req, res) => {
   }
 })
 
-app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
+app.post('/login', loggedout, passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/login',
   failureFlash: true
@@ -168,11 +168,11 @@ function loggedin(req, res, next) {
   res.redirect('/login');
 }
 
-function checkNotAuthenticated(req, res, next) {
+function loggedout(req, res, next) {
   if (req.isAuthenticated()) {
     return res.redirect('/')
   }
   next();
 }
-console.log("WHAHOO");
+console.log("WAHOO");
 app.listen(8080);
