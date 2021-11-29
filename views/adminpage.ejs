@@ -20,56 +20,24 @@ This is the admin page of our website. It provides basic html layouts of what ad
     </header>
 
     <div class="studenttable">
-      <p>Student Table</p>
+      <p>Users Table</p>
       <table>
         <tr>
           <th>First Name</th>
           <th>Last Name</th>
           <th>Email</th>
           <th>ID</th>
-          <th>Courses</th>
+          <th>Account Type</th>
         </tr>
-        <tr>
-          <td>Minjae</td>
-          <td>Kim</td>
-          <td>mjkim65@gmail.com</td>
-          <td>123456789</td>
-          <td>CS 355</td>
-        </tr>
-        <tr>
-          <td>Daniel</td>
-          <td>Yoh</td>
-          <td>dyoh52@gmail.com</td>
-          <td>123456789</td>
-          <td>CS 355</td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="instructortable">
-      <p>Instructor Table</p>
-      <table>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th>ID</th>
-          <th>Courses</th>
-        </tr>
-        <tr>
-          <td>Minjae</td>
-          <td>Kim</td>
-          <td>mjkim65@gmail.com</td>
-          <td>123456789</td>
-          <td>CS 355</td>
-        </tr>
-        <tr>
-          <td>Daniel</td>
-          <td>Yoh</td>
-          <td>dyoh52@gmail.com</td>
-          <td>123456789</td>
-          <td>CS 355</td>
-        </tr>
+        <% data.forEach((user) => { %>
+          <tr>
+            <td><%= user.fname%></td>
+            <td><%= user.lname %></td>
+            <td><%= user.email%></td>
+            <td><%= user._id %></td>
+            <td><%= user.accounttype %></td>
+          </tr>
+        <% }) %>
       </table>
     </div>
 
@@ -77,25 +45,25 @@ This is the admin page of our website. It provides basic html layouts of what ad
       <p>Courses Table</p>
       <table>
         <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
+          <th>Course Name</th>
+          <th>Creator</th>
+          <th>Instructors</th>
           <th>ID</th>
-          <th>Courses</th>
+          <th>Students</th>
         </tr>
         <tr>
-          <td>Minjae</td>
-          <td>Kim</td>
-          <td>mjkim65@gmail.com</td>
-          <td>123456789</td>
           <td>CS 355</td>
+          <td>Minjae Kim</td>
+          <td>Minjae Kim</td>
+          <td>123456789</td>
+          <td>Daniel Yoh</td>
         </tr>
         <tr>
-          <td>Daniel</td>
-          <td>Yoh</td>
-          <td>dyoh52@gmail.com</td>
-          <td>123456789</td>
           <td>CS 355</td>
+          <td>Daniel Yoh</td>
+          <td>Daniel Yoh</td>
+          <td>234567890</td>
+          <td>Minjae Kim</td>
         </tr>
       </table>
     </div>

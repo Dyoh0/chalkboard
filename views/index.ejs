@@ -18,7 +18,7 @@ This is the homepage and index.html file of our website.  It displays a list of 
     <header>
     <%- include('./partials/header') %>
     </header>
-    <% if (accounttype == "Instructor") { %>
+    <% if (accounttype == "Instructor" || accounttype == "Admin") { %>
       <div id="imgcontainer">
         <nav>
           <ul id="instructorlist">

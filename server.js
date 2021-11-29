@@ -72,7 +72,13 @@ app.get('/', loggedin, (req, res) => {
 
 app.get('/adminpage', loggedin, (req, res) => {
   if (req.user.accounttype != "Admin") res.redirect('/')
-  else res.render('adminpage.ejs');
+  Person.find({}, (err, data) => {
+    if (err) console.log(err);
+    else {
+      console.log(data);
+      res.render('adminpage.ejs', { data: data });
+    }
+  })
 })
 
 // app.get('/assignment', loggedin, (req, res) => {
@@ -126,7 +132,6 @@ app.get('/signup', loggedout, (req, res) => {
 
 app.post('/signup', loggedout, async (req, res) => {
   const exists = await Person.exists({ email: req.body.email });
-  console.log("Exists:", exists);
   if (exists) {
     return res.send('This email is already in use.');
   };
