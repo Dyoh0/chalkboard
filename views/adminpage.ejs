@@ -16,7 +16,16 @@ This is the admin page of our website. It provides basic html layouts of what ad
 
   <body>
     <header>
-    <%- include('./partials/header') %>
+      <a href="/" id="logo">
+        <img src="https://dyoh0.github.io/chalkboard/public/img/chalkboard.png" alt="A chalkboard" width="55" />
+      </a>
+      <label for="hamburger">&#9776;</label>
+      <input type="checkbox" id="hamburger" />
+      <ul id="headerbar">
+        <li><a href="/">Home</a></li>
+        <li><form action = "/logout?_method=DELETE" method="POST">
+        <button type = "submit" id="headerbttn">Log out </button></form></li>
+      </ul>
     </header>
 
     <div class="studenttable">

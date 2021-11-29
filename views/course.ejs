@@ -17,17 +17,7 @@ to send an enroll request, and a navbar showing assignment links for enrolled st
   </head>
   <body>
     <header>
-      <a href="https://dyoh0.github.io/chalkboard/HTML/index.html" id="logo">
-        <img src="https://dyoh0.github.io/chalkboard/img/chalkboard.png" alt="A chalkboard" width="55" />
-      </a>
-      <label for="hamburger">&#9776;</label>
-      <input type="checkbox" id="hamburger" />
-
-      <ul id="headerbar">
-        <li><a href="https://dyoh0.github.io/chalkboard/HTML/index.html">Home</a></li>
-        <li><a href="https://dyoh0.github.io/chalkboard/HTML/searchresults.html">Search</a></li>
-        <li><a href="https://dyoh0.github.io/chalkboard/HTML/login.html">Log Out</a></li>
-      </ul>
+    <%- include('./partials/header') %>
     </header>
 
     <h1>Course Title</h1>
@@ -35,7 +25,7 @@ to send an enroll request, and a navbar showing assignment links for enrolled st
       <nav id="assignmentlist">
         <h2>Assignments</h2>
         <ul id="assignments">
-          <li><a href="https://dyoh0.github.io/chalkboard/HTML/assignment.html">Assignment 1</a></li>
+          <li><a href="/assignment">Assignment 1</a></li>
           <li><a href="#">Assignment 2</a></li>
           <li><a href="#">Assignment 3</a></li>
           <li><a href="#">Assignment 4</a></li>
@@ -51,6 +41,6 @@ to send an enroll request, and a navbar showing assignment links for enrolled st
         recusandae, aperiam repudiandae natus nostrum minima consectetur mollitia dolore ipsam!
       </p>
     </main>
-    <button name="enroll" value="enroll" type="button">Enroll</button>
+    <button name="enroll" value="enroll" type="button" id="enrollbttn">Enroll</button>
   </body>
 </html>

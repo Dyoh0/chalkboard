@@ -17,10 +17,7 @@ This is the signup page of our website.  People can sign up as instructors or st
   <body>
     <h1>Sign Up</h1>
     <form action="/signup" method="POST">
-      <p id = "errormsg">
-      <% if (messages.error) { %>
-      <%= messages.error %>
-      <% } %></p>
+      <p id = "errormsg"></p>
       <label for="firstname">First Name:</label>
       <input type="text" name="firstname" id="firstname" placeholder="First Name" class="textinput" required />
 

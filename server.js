@@ -62,13 +62,11 @@ passport.use(new localstrategy({
 }));
 
 app.get('/', loggedin, (req, res) => {
-  res.render('index.ejs', { accounttype: req.user.accounttype });
+  if (req.user.accounttype == "Admin") res.redirect('/adminpage')
+  else res.render('index.ejs', { accounttype: req.user.accounttype });
   // res.render('index.ejs', { name: "Whee" });
 })
 
-// app.get('/acceptreject', loggedin, (req, res) => {
-//   // res.render('acceptreject.ejs');
-// })
 
 app.get('/adminpage', loggedin, (req, res) => {
   if (req.user.accounttype != "Admin") res.redirect('/')
@@ -81,46 +79,50 @@ app.get('/adminpage', loggedin, (req, res) => {
   })
 })
 
-// app.get('/assignment', loggedin, (req, res) => {
-//   // res.render('assignment.ejs');
-// })
+app.get('/assignment', loggedin, (req, res) => {
+  res.render('assignment.ejs');
+})
 
-// app.get('/course', loggedin, (req, res) => {
-//   // res.render('course.ejs');
-// })
+app.get('/course', loggedin, (req, res) => {
+  res.render('course.ejs');
+})
 
-// app.get('/createassignment', loggedin, (req, res) => {
-//   // res.render('createassignment.ejs');
-// })
+app.get('/createassignment', loggedin, instructorcheck, (req, res) => {
+  res.render('createassignment.ejs');
+})
 
-// app.get('/createcourse', loggedin, (req, res) => {
-//   // res.render('createcourse.ejs');
-// })
-// app.get('/editcourse', loggedin, (req, res) => {
-//   // res.render('editcourse.ejs');
-// })
+app.get('/createcourse', loggedin, instructorcheck, (req, res) => {
+  res.render('createcourse.ejs');
+})
 
-// app.get('/gradelist', loggedin, (req, res) => {
-//   // res.render('gradelist.ejs');
-// })
+app.get('/editcourse', loggedin, instructorcheck, (req, res) => {
+  res.render('editcourse.ejs');
+})
 
-// app.get('/grading', loggedin, (req, res) => {
-//   // res.render('grading.ejs');
-// })
+app.get('/gradelist', loggedin, instructorcheck, (req, res) => {
+  res.render('gradelist.ejs');
+})
 
-// app.get('/searchresults', loggedin, (req, res) => {
-//   // res.render('searchresults.ejs');
-// })
+app.get('/grading', loggedin, instructorcheck, (req, res) => {
+  res.render('grading.ejs');
+})
 
-// app.get('/selectedcourse', loggedin, (req, res) => {
-//   res.render('index.ejs', { name: req.user.firstname });
-//   // res.render('index.ejs');
-// })
+app.get('/acceptreject', loggedin, instructorcheck, (req, res) => {
+  res.render('acceptreject.ejs');
+})
 
-// app.get('/studentroster', loggedin, (req, res) => {
-//   res.render('index.ejs', { name: req.user.firstname });
-//   // res.render('index.ejs', { name: "Whee" });
-// })
+app.get('/studentroster', loggedin, instructorcheck, (req, res) => {
+  res.render('studentroster.ejs', { name: "Whee" });
+})
+
+app.get('/searchresults', loggedin, (req, res) => {
+  res.render('searchresults.ejs');
+})
+
+app.get('/selectedcourse', loggedin, instructorcheck, (req, res) => {
+  res.render('selectedcourse.ejs');
+})
+
 
 app.get('/login', loggedout, (req, res) => {
   res.render('login.ejs');
@@ -177,6 +179,11 @@ function loggedout(req, res, next) {
   if (req.isAuthenticated()) {
     return res.redirect('/')
   }
+  next();
+}
+
+function instructorcheck(req, res, next) {
+  if (req.user.accounttype != "Instructor") return res.redirect('/')
   next();
 }
 console.log("WAHOO");

@@ -47,7 +47,7 @@ p {
   flex-wrap: wrap;
 }
 
-button {
+#enrollbttn {
   position: relative;
   left: 45vw;
   padding: 15px;

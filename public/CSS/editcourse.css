@@ -1,4 +1,4 @@
-form {
+#editform {
   margin: auto;
   width: 50%;
 }
@@ -6,7 +6,7 @@ form {
 ul.no-bullets {
   list-style-type: none;
   padding: 0;
-  margin: 0;
+  margin: 0; */
 }
 
 li {
@@ -16,7 +16,7 @@ li {
 
 label {
   font-size: 1.5em;
-}
+} 
 
 .buttons input {
   margin: 25px;
