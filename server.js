@@ -70,11 +70,12 @@ app.get('/', loggedin, (req, res) => {
 
 app.get('/adminpage', loggedin, (req, res) => {
   if (req.user.accounttype != "Admin") res.redirect('/')
+  // TODO: Should probably use a variable to store info for Courses and DB table when I get to that part
   Person.find({}, (err, data) => {
     if (err) console.log(err);
     else {
       console.log(data);
-      res.render('adminpage.ejs', { data: data });
+      res.render('adminpage.ejs', { data });
     }
   })
 })
