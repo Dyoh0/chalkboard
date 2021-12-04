@@ -1,7 +1,7 @@
 // Name: Daniel Yoh
 // Date: 11.22.2022
 // Course: CS 355
-// This is the index.js file of our website, and the main app file.  
+// This is the server.js file of our website, and the main app file.  This page gets all non-instructor related pages for the user, and posts information from the register and login pages.
 // https://www.youtube.com/watch?v=-RCnNyD0L-s Much of the login, register, and logout code in this file is based off of this tutorial.  However. the tutorial does not use a database at all, so I changed up the code wherever necessary to be able to connect to the DB.
 
 const express = require('express');
@@ -80,6 +80,7 @@ app.get('/adminpage', loggedin, (req, res) => {
   })
 })
 
+// TODO: Maybe use If Check on account type to render student or instruc view of the assignment?
 app.get('/assignment', loggedin, (req, res) => {
   res.render('assignment.ejs');
 })
@@ -88,42 +89,9 @@ app.get('/course', loggedin, (req, res) => {
   res.render('course.ejs');
 })
 
-app.get('/createassignment', loggedin, instructorcheck, (req, res) => {
-  res.render('createassignment.ejs');
-})
-
-app.get('/createcourse', loggedin, instructorcheck, (req, res) => {
-  res.render('createcourse.ejs');
-})
-
-app.get('/editcourse', loggedin, instructorcheck, (req, res) => {
-  res.render('editcourse.ejs');
-})
-
-app.get('/gradelist', loggedin, instructorcheck, (req, res) => {
-  res.render('gradelist.ejs');
-})
-
-app.get('/grading', loggedin, instructorcheck, (req, res) => {
-  res.render('grading.ejs');
-})
-
-app.get('/acceptreject', loggedin, instructorcheck, (req, res) => {
-  res.render('acceptreject.ejs');
-})
-
-app.get('/studentroster', loggedin, instructorcheck, (req, res) => {
-  res.render('studentroster.ejs', { name: "Whee" });
-})
-
 app.get('/searchresults', loggedin, (req, res) => {
   res.render('searchresults.ejs');
 })
-
-app.get('/selectedcourse', loggedin, instructorcheck, (req, res) => {
-  res.render('selectedcourse.ejs');
-})
-
 
 app.get('/login', loggedout, (req, res) => {
   res.render('login.ejs');
@@ -132,6 +100,9 @@ app.get('/login', loggedout, (req, res) => {
 app.get('/signup', loggedout, (req, res) => {
   res.render('signup.ejs');
 })
+
+const instructorRouter = require('./routes/instructor')
+app.use('/', instructorRouter)
 
 app.post('/signup', loggedout, async (req, res) => {
   const exists = await Person.exists({ email: req.body.email });
@@ -183,9 +154,5 @@ function loggedout(req, res, next) {
   next();
 }
 
-function instructorcheck(req, res, next) {
-  if (req.user.accounttype != "Instructor") return res.redirect('/')
-  next();
-}
 console.log("WAHOO");
 app.listen(8080);

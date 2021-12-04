@@ -1,3 +1,8 @@
+// Name: Daniel Yoh
+// Date: 11.25.2022
+// Course: CS 355
+// This is the database.js file of our website, and is for information related to the website's database.
+
 const mongoose = require('mongoose');
 mongoose.connect("mongodb+srv://user:qrnw4uBf6f3RWKnT@cluster0.nl8r4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
 
