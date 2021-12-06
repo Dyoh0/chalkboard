@@ -18,9 +18,13 @@ const personSchema = new Schema({
 
 let Person = mongoose.model('Person', personSchema);
 
-// const courseSchema = new Schema({
-// });
-// let Course = mongoose.model('Course', courseSchema);
+const courseSchema = new Schema({
+  coursename: { type: String, required: true },
+  instructors: { type: String, required: true },
+  coursedesc: { type: String, required: true },
+});
+
+let Course = mongoose.model('Course', courseSchema);
 
 // const assignmentSchema = new Schema({
 // });
@@ -29,3 +33,4 @@ let Person = mongoose.model('Person', personSchema);
 // exports.AssignmentModel = Assignment;
 
 exports.PersonModel = Person;
+exports.CourseModel = Course;

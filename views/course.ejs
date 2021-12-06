@@ -20,7 +20,7 @@ to send an enroll request, and a navbar showing assignment links for enrolled st
     <%- include('./partials/header') %>
     </header>
 
-    <h1>Course Title</h1>
+    <h1><%= data.coursename %></h1>
     <main>
       <nav id="assignmentlist">
         <h2>Assignments</h2>
@@ -33,12 +33,7 @@ to send an enroll request, and a navbar showing assignment links for enrolled st
         </ul>
       </nav>
       <p class="coursedesc">
-        Description of the course. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo, labore? Accusantium,
-        alias laudantium sint similique officiis culpa obcaecati ipsa, soluta molestias iure, ut officia vel sapiente
-        totam consequuntur ipsum harum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dicta
-        quisquam at enim laborum? Asperiores neque possimus, sunt vitae corrupti explicabo ut dolor quia perferendis
-        omnis itaque amet, earum quibusdam veniam reiciendis! Sint cupiditate repellat earum ab aliquid saepe distinctio
-        recusandae, aperiam repudiandae natus nostrum minima consectetur mollitia dolore ipsam!
+        <%= data.coursedesc %>
       </p>
     </main>
     <button name="enroll" value="enroll" type="button" id="enrollbttn">Enroll</button>

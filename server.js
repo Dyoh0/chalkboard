@@ -67,7 +67,6 @@ app.get('/', loggedin, (req, res) => {
   // res.render('index.ejs', { name: "Whee" });
 })
 
-
 app.get('/adminpage', loggedin, (req, res) => {
   if (req.user.accounttype != "Admin") res.redirect('/')
   // TODO: Should probably use a variable to store info for Courses and DB table when I get to that part
@@ -101,8 +100,10 @@ app.get('/signup', loggedout, (req, res) => {
   res.render('signup.ejs');
 })
 
-const instructorRouter = require('./routes/instructor')
-app.use('/', instructorRouter)
+const instructorrouter = require('./routes/instructor')
+const instructorpostsrouter = require('./routes/instructorposts')
+app.use('/', instructorrouter)
+app.use('/', instructorpostsrouter)
 
 app.post('/signup', loggedout, async (req, res) => {
   const exists = await Person.exists({ email: req.body.email });
