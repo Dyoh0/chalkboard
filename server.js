@@ -67,17 +67,8 @@ app.get('/', loggedin, (req, res) => {
   // res.render('index.ejs', { name: "Whee" });
 })
 
-app.get('/adminpage', loggedin, (req, res) => {
-  if (req.user.accounttype != "Admin") res.redirect('/')
-  // TODO: Should probably use a variable to store info for Courses and DB table when I get to that part
-  Person.find({}, (err, data) => {
-    if (err) console.log(err);
-    else {
-      console.log(data);
-      res.render('adminpage.ejs', { data });
-    }
-  })
-})
+const adminrouter = require('./routes/adminpage')
+app.use('/', adminrouter)
 
 // TODO: Maybe use If Check on account type to render student or instruc view of the assignment?
 app.get('/assignment', loggedin, (req, res) => {
@@ -85,7 +76,12 @@ app.get('/assignment', loggedin, (req, res) => {
 })
 
 app.get('/course', loggedin, (req, res) => {
-  res.render('course.ejs');
+  res.render('course.ejs', {
+    data: {
+      coursename: "Uh,",
+      coursedesc: "So I realized that, because I added the createcourse functionality, the link you clicked on is now kinda broken.  I'll fix that later."
+    }
+  });
 })
 
 app.get('/searchresults', loggedin, (req, res) => {

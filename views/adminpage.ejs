@@ -38,7 +38,7 @@ This is the admin page of our website. It provides basic html layouts of what ad
           <th>ID</th>
           <th>Account Type</th>
         </tr>
-        <% data.forEach((user) => { %>
+        <% userdata.forEach((user) => { %>
           <tr>
             <td><%= user.fname%></td>
             <td><%= user.lname %></td>
@@ -74,6 +74,17 @@ This is the admin page of our website. It provides basic html layouts of what ad
           <td>234567890</td>
           <td>Minjae Kim</td>
         </tr>
+
+        <% coursedata.forEach((course) => { %>
+          <tr>
+            <td><%= course.coursename%></td>
+            <td> Not implemented yet </td>
+            <td><%= course.instructors %></td>
+            <td><%= course._id %></td>
+            <td>Not implemented yet</td>
+          </tr>
+        <% }) %>
+
       </table>
     </div>
 
@@ -92,6 +103,14 @@ This is the admin page of our website. It provides basic html layouts of what ad
           <td>Bio</td>
           <td>Bio</td>
         </tr>
+
+        <% searchdata.forEach((search) => { %>
+          <tr>
+            <td><%= search.searchterm%></td>
+            <td> Not implemented yet </td>
+          </tr>
+        <% }) %>
+
       </table>
     </div>
   </body>

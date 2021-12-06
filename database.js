@@ -32,5 +32,12 @@ let Course = mongoose.model('Course', courseSchema);
 // exports.CourseModel = Course;
 // exports.AssignmentModel = Assignment;
 
+const searchSchema = new Schema({
+  searchterm: { type: String, required: true },
+})
+
+let Search = mongoose.model('Search', searchSchema);
+
 exports.PersonModel = Person;
 exports.CourseModel = Course;
+exports.SearchModel = Search;

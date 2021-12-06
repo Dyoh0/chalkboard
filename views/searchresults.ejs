@@ -22,9 +22,11 @@ will display results matching their search string.
     </header>
 
     <div id="searchbar">
+      <form action="/searchresults" method="POST">
       <img src="../img/magnifying-glass-ga7dc5fc0e_640.jpg" alt="A magnifying glass" width="25" />
-      <input type="text" id="searchterm" placeholder="Search for Courses" />
-      <button type="submit" value="searchbutton">Search</button>
+        <input type="text" id="searchterm" name="searchterm" placeholder="Search for Courses" />
+        <button type="submit" name="search" value="searchbutton">Search</button>
+      </form>
     </div>
 
     <main>
