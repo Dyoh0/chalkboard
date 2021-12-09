@@ -11,11 +11,7 @@ th {
   padding: 8px;
 }
 
-.studenttable,
-.instructortable,
-.coursestable,
-.database,
-.acceptrejecttable {
+.admintable {
   margin: 5%;
   overflow-x: auto;
 }

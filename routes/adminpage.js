@@ -8,10 +8,10 @@ const router = express.Router()
 const Person = require("../database.js").PersonModel;
 const Course = require("../database.js").CourseModel;
 const Search = require("../database.js").SearchModel;
+const Assignment = require("../database.js").AssignmentModel;
 
 router.get('/adminpage', loggedin, (req, res) => {
   if (req.user.accounttype != "Admin") res.redirect('/')
-  // TODO: Should probably use a variable to store info for Courses and DB table when I get to that part
   Person.find({}, (err, data) => {
     if (err) console.log(err);
     else {
@@ -24,7 +24,13 @@ router.get('/adminpage', loggedin, (req, res) => {
             if (err) console.log(err);
             else {
               const coursedata = data;
-              res.render('adminpage.ejs', { userdata, searchdata, coursedata });
+              Assignment.find({}, (err, data) => {
+                if (err) console.log(err);
+                else {
+                  const assignmentdata = data;
+                  res.render('adminpage.ejs', { userdata, searchdata, coursedata, assignmentdata });
+                }
+              })
 
             }
           })

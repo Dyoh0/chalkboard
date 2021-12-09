@@ -28,7 +28,7 @@ This is the admin page of our website. It provides basic html layouts of what ad
       </ul>
     </header>
 
-    <div class="studenttable">
+    <div class="admintable">
       <p>Users Table</p>
       <table>
         <tr>
@@ -50,7 +50,7 @@ This is the admin page of our website. It provides basic html layouts of what ad
       </table>
     </div>
 
-    <div class="coursestable">
+    <div class="admintable">
       <p>Courses Table</p>
       <table>
         <tr>
@@ -88,7 +88,35 @@ This is the admin page of our website. It provides basic html layouts of what ad
       </table>
     </div>
 
-    <div class="database">
+
+    <div class="admintable">
+      <p>Assignments Table</p>
+      <table>
+        <tr>
+          <th>Assignment ID</th>
+          <th>Assignment Name</th>
+          <th>Assignment Desc</th>
+          <th>Questions</th>
+          <th>Answers</th>          
+          <th>Due Date</th>
+          <th>Course ID</th>
+        </tr>
+        <% assignmentdata.forEach((assignment) => { %>
+          <tr>
+            <td><%= assignment._id%></td>
+            <td><%= assignment.assignmentname %></td>
+            <td><%= assignment.assignmentdesc%></td>
+            <td><%= assignment.questions %></td>
+            <td><%= assignment.answers %></td>
+            <td><%= assignment.duedate %></td>
+            <td><%= assignment.courseid %></td>
+
+          </tr>
+        <% }) %>
+      </table>
+    </div>
+
+    <div class="admintable">
       <p>Database Table</p>
       <table>
         <tr>
