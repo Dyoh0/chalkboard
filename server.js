@@ -72,11 +72,18 @@ app.use('/', adminrouter)
 
 // TODO: Maybe use If Check on account type to render student or instruc view of the assignment?
 app.get('/assignment', loggedin, (req, res) => {
-  res.render('assignment.ejs');
+  res.render('assignment.ejs', {accounttype: req.user.accounttype,
+      data: {
+        assignmentname: "Oh yeah",
+        assignmentdesc: "This is also currently broken as Im working on the assignment DB functionality",
+        questions: ["Batman"],
+        answers: "Bruce Wayne"
+    }
+  });
 })
 
 app.get('/course', loggedin, (req, res) => {
-  res.render('course.ejs', {
+  res.render('course.ejs',{
     data: {
       coursename: "Uh,",
       coursedesc: "So I realized that, because I added the createcourse functionality, the link you clicked on is now kinda broken.  I'll fix that later."

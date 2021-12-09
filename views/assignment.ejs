@@ -20,30 +20,36 @@ assignment and questions and fields for the user to type their answers into.
     <%- include('./partials/header') %>
     </header>
 
-    <h1>Assignment 1</h1>
+    <h1><%= data.assignmentname %></h1>
     <p class="assignmentdesc">
-      Description. Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium ipsum fugiat itaque impedit
-      quod. Cum aliquam iusto officia accusamus repellat quo fugiat vel sequi aliquid, voluptas rem impedit deserunt
-      esse dicta iure pariatur sapiente beatae aut iste fuga? Quaerat, quas accusamus. Iste unde nostrum exercitationem
-      veniam perferendis, cupiditate porro ea possimus in quam nisi. Soluta delectus consequuntur omnis iusto, odit
-      voluptatum ullam quibusdam, ad quaerat ducimus quasi quo officiis error minus rem fugit beatae voluptatibus non
-      quam nesciunt velit ratione repellat alias? Est, asperiores voluptatem impedit odit aliquam pariatur iusto dolorem
-      maxime quisquam, autem veritatis tenetur eveniet assumenda vel dolor corrupti? Sapiente ipsam, debitis unde
-      nostrum dolores eveniet modi qui fugiat, ab, quae nemo nesciunt laboriosam enim assumenda? Soluta, labore ipsam.
-      Odit voluptates officia placeat aperiam odio inventore excepturi perferendis modi minima. Nobis, praesentium
-      eligendi placeat adipisci beatae ullam explicabo eius. Deserunt blanditiis minus provident quod quaerat suscipit
-      neque quibusdam.
+    <%= data.assignmentdesc %>
     </p>
     <form action="#">
+
+      <% data.questions.forEach((quest, index) => { %>
+      <% const answ = data.answers[index];%>
       <div class="questionanswermodule">
         <p class="questiontext">
           Question:
-          <span class="question">What are the lyrics to Never Gonna Give You Up?</span>
+          <span class="question">
+          <%= quest %>
+          </span>
         </p>
+    
         <label for="answer">Answer:</label>
         <input type="text" id="answer" name="answer" />
         <input type="file" id="filesubmit" name="filesubmit" />
+        
+        <% if (accounttype == "Instructor") { %>
+          <p class="questiontext">Answer Key:
+            <%= answ %>
+          </p>
+        <% } %>
+
+<% }) %>
+
       </div>
+
       <input type="submit" id="savedraft" name="savedraft" value="Save as Draft" />
       <input type="submit" id="submit" name="submit" />
     </form>

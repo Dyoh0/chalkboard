@@ -54,10 +54,10 @@ This is the admin page of our website. It provides basic html layouts of what ad
       <p>Courses Table</p>
       <table>
         <tr>
+          <th>Course ID</th>
           <th>Course Name</th>
           <th>Creator</th>
           <th>Instructors</th>
-          <th>ID</th>
           <th>Students</th>
         </tr>
         <tr>
@@ -77,10 +77,10 @@ This is the admin page of our website. It provides basic html layouts of what ad
 
         <% coursedata.forEach((course) => { %>
           <tr>
-            <td><%= course.coursename%></td>
-            <td> Not implemented yet </td>
-            <td><%= course.instructors %></td>
             <td><%= course._id %></td>
+            <td><%= course.coursename%></td>
+            <td> <%= course.creatorname%> </td>
+            <td><%= course.instructors %></td>
             <td>Not implemented yet</td>
           </tr>
         <% }) %>

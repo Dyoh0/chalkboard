@@ -20,17 +20,24 @@ let Person = mongoose.model('Person', personSchema);
 
 const courseSchema = new Schema({
   coursename: { type: String, required: true },
-  instructors: { type: String, required: true },
+  creatorid: { type: Schema.Types.ObjectId, required: true },
+  creatorname: { type: String, required: true },
+  instructors: [String],
   coursedesc: { type: String, required: true },
 });
 
 let Course = mongoose.model('Course', courseSchema);
 
-// const assignmentSchema = new Schema({
-// });
-// let Assignment = mongoose.model('Assignment', assignmentSchema);
-// exports.CourseModel = Course;
-// exports.AssignmentModel = Assignment;
+const assignmentSchema = new Schema({
+  assignmentname: { type: String, required: true },
+  assignmentdesc: { type: String, required: true },
+  questions: [String],
+  answers: [String],
+  duedate: Date,
+  courseid: { type: Schema.Types.ObjectId, required: true }
+});
+
+let Assignment = mongoose.model('Assignment', assignmentSchema);
 
 const searchSchema = new Schema({
   searchterm: { type: String, required: true },
@@ -41,3 +48,4 @@ let Search = mongoose.model('Search', searchSchema);
 exports.PersonModel = Person;
 exports.CourseModel = Course;
 exports.SearchModel = Search;
+exports.AssignmentModel = Assignment;
