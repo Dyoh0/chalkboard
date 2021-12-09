@@ -19,7 +19,6 @@ router.post('/createcourse', loggedin, async (req, res) => {
   if (exists) {
     return res.send('This course name is already in use.');
   };
-  // try {
   const newcourse = new Course({
     coursename: req.body.coursename,
     creatorid: req.user.id,
@@ -33,8 +32,7 @@ router.post('/createcourse', loggedin, async (req, res) => {
     console.log(data)
   });
   res.redirect('/course/' + newcourse.id);
-  // } catch {
-  // }
+
 })
 
 router.get('/course/:id', loggedin, (req, res) => {
@@ -48,35 +46,42 @@ router.post('/createassignment', loggedin, async (req, res) => {
   console.log("reqbody:", req.body);
   console.log("accounttype:", req.user.accounttype);
 
-  // try {
-  // const questionarray = 
-  // const answerarray = 
-    
-  const newassignment = new Assignment({
-    assignmentname: req.body.inputassignmenttitle,
-    assignmentdesc: req.body.inputdesc,
-    questions: questionarray,
-    answers: answerarray,
-    duedate: req.body.duedate,
-  // questions: [String],
-  // answers: [String],
-    courseid: inputcourseid
-  });
-  newcourse.save((err, data) => {
-    if (err) return console.log(err);
-    console.log(newcourse.coursename + newcourse.id + " saved to database.  FINALLY.");
-    console.log(data)
-  });
-  // res.redirect('/course/assignment/' + newassignment.id);
-  res.redirect('/');
-  // } catch {
-  // }
+  const questionarray = req.body.inputquestion;
+  const answerarray = req.body.inputanswer;
+
+  Course.findById({ _id: req.body.inputcourseid }, (err, data) => {
+    if (err) res.send("Course does not exist.")
+    else {
+      const newassignment = new Assignment({
+        assignmentname: req.body.inputassignmenttitle,
+        assignmentdesc: req.body.inputdesc,
+        questions: questionarray,
+        answers: answerarray,
+        duedate: req.body.duedate,
+        courseid: req.body.inputcourseid
+      });
+      newassignment.save((err, data) => {
+        if (err) return console.log(err);
+        console.log(newassignment.assignmentname + newassignment.id + " saved to database.  FINALLY.");
+        console.log(data)
+        res.redirect('/course/' + req.body.inputcourseid + '/assignment/' + data.id);
+      });
+    }
+  })
 })
 
-router.get('/course/assignment/:id', loggedin, (req, res) => {
-  Assignment.findById(req.params.id, (err, data) => {
-    if (err) console.log("course/assignment/:id:", err);
-    else res.render('assignment.ejs', { data })
+router.get('/course/:courseid/assignment/:id', loggedin, (req, res) => {
+  Course.findById(req.params.courseid, (err, coursedata) => {
+    if (err) console.log("Course ID:", err)
+    else {
+      Assignment.findById(req.params.id, (err, data) => {
+        if (err) console.log("course/id/assignment/:id:", err);
+        else {
+          console.log(data);
+          res.render('assignment.ejs', { accounttype: req.user.accounttype, data })
+        }
+      })
+    }
   })
 })
 

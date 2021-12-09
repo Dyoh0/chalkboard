@@ -11,8 +11,8 @@ assignment and questions and fields for the user to type their answers into.
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../CSS/assignment.css" />
-    <link rel="stylesheet" href="../CSS/header.css" />
+    <link rel="stylesheet" href="/CSS/assignment.css" />
+    <link rel="stylesheet" href="/CSS/header.css" />
     <title>Assignment Page</title>
   </head>
   <body>
@@ -25,29 +25,21 @@ assignment and questions and fields for the user to type their answers into.
     <%= data.assignmentdesc %>
     </p>
     <form action="#">
-
-      <% data.questions.forEach((quest, index) => { %>
-      <% const answ = data.answers[index];%>
       <div class="questionanswermodule">
-        <p class="questiontext">
-          Question:
-          <span class="question">
-          <%= quest %>
-          </span>
-        </p>
-    
-        <label for="answer">Answer:</label>
-        <input type="text" id="answer" name="answer" />
-        <input type="file" id="filesubmit" name="filesubmit" />
-        
-        <% if (accounttype == "Instructor") { %>
-          <p class="questiontext">Answer Key:
-            <%= answ %>
-          </p>
-        <% } %>
-
-<% }) %>
-
+        <% data.questions.forEach((quest, index) => { %>
+          <% const answ = data.answers[index];%>
+            <p class="questiontext">Question:
+              <span class="question"><%= quest %></span>
+            </p>
+      
+          <label for="answer">Answer:</label>
+          <input type="text" id="answer" name="answer" />
+          <input type="file" id="filesubmit" name="filesubmit" />
+          
+          <% if (accounttype == "Instructor") { %>
+            <p class="questiontext">Answer Key: <%= answ %></p>
+          <% } %>
+        <% }) %>
       </div>
 
       <input type="submit" id="savedraft" name="savedraft" value="Save as Draft" />
