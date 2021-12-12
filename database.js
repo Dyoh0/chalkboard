@@ -23,7 +23,7 @@ const courseSchema = new Schema({
   coursename: { type: String, required: true },
   creatorid: { type: Schema.Types.ObjectId, required: true },
   creatorname: { type: String, required: true },
-  instructors: [String],
+  instructors: [Schema.Types.ObjectId],
   coursedesc: { type: String, required: true },
   students: [Schema.Types.ObjectId],
   assignments: [Schema.Types.ObjectId]
