@@ -38,7 +38,36 @@ router.post('/createcourse', loggedin, async (req, res) => {
 router.get('/course/:id', loggedin, (req, res) => {
   Course.findById(req.params.id, (err, data) => {
     if (err) console.log("course/:id:", err);
-    else res.render('course.ejs', { data })
+    else {
+      if (req.user.accounttype == "Student") {
+        Course.find({ _id: req.params.id, students: req.user.id }, (err, confirm) => {
+          if (confirm == "") {
+            res.render('course.ejs', {
+              data: {
+                // TODO: Finish this part to display title+desc but no assignments
+                coursedesc: "You are not enrolled yet."
+              }
+            })
+          }
+          else {
+            const url = req.url;
+            res.render('course.ejs', { data, url })
+          }
+        })
+      }
+      else {
+        // TODO: Search course DB's creator and instructors field.  if true:
+        console.log("Youre a wizard, Harry.");
+        const url = req.url;
+        Assignment.find({ courseid: req.params.id }, (err, assignmentdata) => {
+          if (err) console.log(err);
+          else {
+            res.render('course.ejs', { data, assignmentdata, url })
+          }
+        })
+      }
+    }
+
   })
 })
 
@@ -49,7 +78,7 @@ router.post('/createassignment', loggedin, async (req, res) => {
   const questionarray = req.body.inputquestion;
   const answerarray = req.body.inputanswer;
 
-  Course.findById({ _id: req.body.inputcourseid }, (err, data) => {
+  Course.findById({ _id: req.body.inputcourseid }, (err, coursedata) => {
     if (err) res.send("Course does not exist.")
     else {
       const newassignment = new Assignment({
@@ -63,8 +92,12 @@ router.post('/createassignment', loggedin, async (req, res) => {
       newassignment.save((err, data) => {
         if (err) return console.log(err);
         console.log(newassignment.assignmentname + newassignment.id + " saved to database.  FINALLY.");
-        console.log(data)
-        res.redirect('/course/' + req.body.inputcourseid + '/assignment/' + data.id);
+        console.log(data);
+        coursedata.assignments.push(data.id);
+        coursedata.save((err, success) => {
+          if (err) console.log(err);
+          else res.redirect('/course/' + req.body.inputcourseid + '/assignment/' + data.id);
+        })
       });
     }
   })

@@ -24,6 +24,8 @@ const courseSchema = new Schema({
   creatorname: { type: String, required: true },
   instructors: [String],
   coursedesc: { type: String, required: true },
+  students: [Schema.Types.ObjectId],
+  assignments: [Schema.Types.ObjectId]
 });
 
 let Course = mongoose.model('Course', courseSchema);

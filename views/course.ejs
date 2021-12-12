@@ -20,18 +20,24 @@ to send an enroll request, and a navbar showing assignment links for enrolled st
     <%- include('./partials/header') %>
     </header>
 
-    <h1><%= data.coursename %></h1>
+    <% if (data.coursename) { %> 
+      <h1><%= data.coursename %></h1>
+    <% } %>
+    </p>
     <main>
-      <nav id="assignmentlist">
-        <h2>Assignments</h2>
-        <ul id="assignments">
-          <li><a href="/assignment">Assignment 1</a></li>
-          <li><a href="#">Assignment 2</a></li>
-          <li><a href="#">Assignment 3</a></li>
-          <li><a href="#">Assignment 4</a></li>
-          <li><a href="#">Assignment 5</a></li>
-        </ul>
-      </nav>
+      <% if (data.assignments.length != 0) { %> 
+        <nav id="assignmentlist">
+          <h2>Assignments</h2>
+          <ul id="assignments">
+            <% assignmentdata.forEach((assignment) => { %>
+              <% var urlplus = url + "/assignment/" + assignment.id; %>
+              <li><a href= <%=urlplus%> > 
+              <%= assignment.assignmentname %>
+              </a></li>
+            <% }) %>
+          </ul>
+        </nav>
+      <% } %>
       <p class="coursedesc">
         <%= data.coursedesc %>
       </p>
