@@ -14,6 +14,7 @@ const personSchema = new Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   accounttype: { type: String, required: true },
+  enrolledcourses: [Schema.Types.ObjectId]
 });
 
 let Person = mongoose.model('Person', personSchema);

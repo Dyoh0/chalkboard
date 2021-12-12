@@ -83,14 +83,20 @@ app.get('/assignment', loggedin, (req, res) => {
   });
 })
 
-app.get('/course', loggedin, (req, res) => {
-  res.render('course.ejs', {
-    data: {
-      coursename: "Uh,",
-      coursedesc: "So I realized that, because I added the createcourse functionality, the link you clicked on is now kinda broken.  I'll fix that later."
-    }
-  });
-})
+// app.get('/course', loggedin, (req, res) => {
+//   const url = req.url;
+//   const assignmentdata = {
+//     assignments: ["Ugh"]
+//   };
+//   res.render('course.ejs', {
+//     data: {
+//       coursename: "Uh,",
+//       coursedesc: "So I realized that, because I added the createcourse functionality, the link you clicked on is now kinda broken.  I'll fix that later.",
+//       assignments: ["Nothing here", "lol"]
+//     }
+//     , url, assignmentdata
+//   });
+// })
 
 app.get('/searchresults', loggedin, (req, res) => {
   res.render('searchresults.ejs');

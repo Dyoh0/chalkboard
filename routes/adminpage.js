@@ -31,7 +31,6 @@ router.get('/adminpage', loggedin, (req, res) => {
                   res.render('adminpage.ejs', { userdata, searchdata, coursedata, assignmentdata });
                 }
               })
-
             }
           })
         }

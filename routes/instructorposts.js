@@ -40,8 +40,8 @@ router.get('/course/:id', loggedin, (req, res) => {
     if (err) console.log("course/:id:", err);
     else {
       if (req.user.accounttype == "Student") {
-        Course.find({ _id: req.params.id, students: req.user.id }, (err, confirm) => {
-          if (confirm == "") {
+        Course.find({ _id: req.params.id, students: req.user.id }, (err, notexist) => {
+          if (notexist == "") {
             res.render('course.ejs', {
               data: {
                 // TODO: Finish this part to display title+desc but no assignments
@@ -51,7 +51,12 @@ router.get('/course/:id', loggedin, (req, res) => {
           }
           else {
             const url = req.url;
-            res.render('course.ejs', { data, url })
+            Assignment.find({ courseid: req.params.id }, (err, assignmentdata) => {
+              if (err) console.log(err);
+              else {
+                res.render('course.ejs', { data, assignmentdata, url })
+              }
+            })
           }
         })
       }
