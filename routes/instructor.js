@@ -5,6 +5,7 @@
 
 const express = require('express')
 const router = express.Router()
+const Course = require("../database.js").CourseModel;
 
 router.get('/createassignment', loggedin, instructorcheck, (req, res) => {
   res.render('createassignment.ejs');
@@ -15,7 +16,13 @@ router.get('/createcourse', loggedin, instructorcheck, (req, res) => {
 })
 
 router.get('/editcourse', loggedin, instructorcheck, (req, res) => {
-  res.render('editcourse.ejs');
+  Course.find({ creator: req.user.id }, (err, data) => {
+    if (err) console.log(err);
+    else {
+      console.log(data);
+      res.render('editcourse.ejs', { data });
+    }
+  })
 })
 
 router.get('/gradelist', loggedin, instructorcheck, (req, res) => {

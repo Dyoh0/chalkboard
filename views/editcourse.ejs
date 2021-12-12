@@ -23,28 +23,17 @@ This is the editcourse page of our website. It provides basic html layouts of wh
     <form id = "editform">
       <h1>Edit Course</h1>
       <ul class="no-bullets">
-        <li>
-          <input type="radio" id="course1" name="coursechoice" value="Course1" required />
-          <label for="course1" class="courselabels">Course 1</label>
-        </li>
-        <li>
-          <input type="radio" id="course2" name="coursechoice" value="Course2" required />
-          <label for="course2" class="courselabels">Course 2</label>
-        </li>
-        <li>
-          <input type="radio" id="course3" name="coursechoice" value="Course3" required />
-          <label for="course3" class="courselabels">Course 3</label>
-        </li>
-        <li>
-          <input type="radio" id="course4" name="coursechoice" value="Course4" required />
-          <label for="course4" class="courselabels">Course 4</label>
-        </li>
+        <% data.forEach((course) => { %>
+          <li>
+            <input type="radio" id=<%=course.id%> name="coursechoice" value="Course1" required />
+            <label for=<%=course.id%> class="courselabels"><%= course.coursename %></label>
+          </li>
+        <% }) %>
       </ul>
 
       <div class="buttons">
         <input type="button" id="editbtt" name="Edit" value="Edit" />
         <input type="button" id="deletebtt" name="Delete" value="Delete" />
-        <input type="button" id="leavebtt" name="Leave" value="Leave" />
       </div>
     </form>
   </body>
