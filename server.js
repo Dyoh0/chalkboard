@@ -84,8 +84,10 @@ app.get('/signup', loggedout, (req, res) => {
 
 const instructorrouter = require('./routes/instructor')
 const instructorpostsrouter = require('./routes/instructorposts')
+const editcourserouter = require('./routes/editcourseroute')
 app.use('/', instructorrouter)
 app.use('/', instructorpostsrouter)
+app.use('/', editcourserouter)
 
 app.post('/signup', loggedout, async (req, res) => {
   const exists = await Person.exists({ email: req.body.email });

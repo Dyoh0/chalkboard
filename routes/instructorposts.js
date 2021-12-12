@@ -19,13 +19,24 @@ router.post('/createcourse', loggedin, async (req, res) => {
   if (exists) {
     return res.send('This course name is already in use.');
   };
-  const newcourse = new Course({
-    coursename: req.body.coursename,
-    creatorid: req.user.id,
-    creatorname: req.user.fname + " " + req.user.lname,
-    instructors: req.body.instructor,
-    coursedesc: req.body.coursedescription
-  });
+  let newcourse;
+  if (req.body.instructor == "") {
+    newcourse = new Course({
+      coursename: req.body.coursename,
+      creatorid: req.user.id,
+      creatorname: req.user.fname + " " + req.user.lname,
+      coursedesc: req.body.coursedescription
+    });
+  }
+  else {
+    newcourse = new Course({
+      coursename: req.body.coursename,
+      creatorid: req.user.id,
+      creatorname: req.user.fname + " " + req.user.lname,
+      instructors: req.body.instructor,
+      coursedesc: req.body.coursedescription
+    });
+  }
   newcourse.save((err, data) => {
     if (err) return console.log(err);
     console.log(newcourse.coursename + newcourse.id + " saved to database.  FINALLY.");
@@ -35,61 +46,60 @@ router.post('/createcourse', loggedin, async (req, res) => {
 
 })
 
-router.get('/course/:id', loggedin, (req, res) => {
-  Course.findById(req.params.id, (err, data) => {
-    if (err) console.log("course/:id:", err);
-    else {
-      if (req.user.accounttype == "Student") {
-        Course.find({ _id: req.params.id, students: req.user.id }, (err, notenrolled) => {
-          if (notenrolled == "") {
-            res.render('course.ejs', {
-              data: {
-                coursename: data.coursename,
-                coursedesc: data.coursedesc
-              }
-            })
-          }
-          else {
-            const url = req.url;
-            Assignment.find({ courseid: req.params.id }, (err, assignmentdata) => {
-              if (err) console.log(err);
-              else {
-                res.render('course.ejs', { data, assignmentdata, url })
-              }
-            })
-          }
-        })
-      }
-      else {
-        Course.find({
-          courseid: req.params.id, $or: [
-            { creatorid: req.user.id },
-            { instructors: req.user.id }
-          ]
-        }, (err, notassigned) => {
-          if (notassigned == "") {
-            console.log("notassigned:", req.user.id)
-            res.render('course.ejs', {
-              data: {
-                coursename: data.coursename,
-                coursedesc: data.coursedesc
-              }
-            })
-          }
-          else {
-            console.log("Youre a wizard, Harry.");
-            const url = req.url;
-            Assignment.find({ courseid: req.params.id }, (err, assignmentdata) => {
-              if (err) console.log(err);
-              else {
-                res.render('course.ejs', { data, assignmentdata, url })
-              }
-            })
-          }
-        })
-      }
+router.get('/course/:id', loggedin, async (req, res) => {
+  let data = await Course.findById(req.params.id);
+  if (!data) res.send("Course does not exist.");
+  else {
+    if (req.user.accounttype == "Student") {
+      Course.find({ _id: req.params.id, students: req.user.id }, (err, notenrolled) => {
+        if (notenrolled == "") {
+          res.render('course.ejs', {
+            data: {
+              coursename: data.coursename,
+              coursedesc: data.coursedesc
+            }
+          })
+        }
+        else {
+          const url = req.url;
+          Assignment.find({ courseid: req.params.id }, (err, assignmentdata) => {
+            if (!assignmentdata) res.send("Assignment doesn't exist.");
+            else {
+              res.render('course.ejs', { data, assignmentdata, url })
+            }
+          })
+        }
+      })
     }
-  })
+    else {
+      Course.find({
+        courseid: req.params.id, $or: [
+          { creatorid: req.user.id },
+          { instructors: req.user.id }
+        ]
+      }, (err, notassigned) => {
+        if (notassigned == "") {
+          console.log("notassigned:", req.user.id)
+          res.render('course.ejs', {
+            data: {
+              coursename: data.coursename,
+              coursedesc: data.coursedesc
+            }
+          })
+        }
+        else {
+          console.log("Youre a wizard, Harry.");
+          const url = req.url;
+          Assignment.find({ courseid: req.params.id }, (err, assignmentdata) => {
+            if (err) console.log(err);
+            else {
+              res.render('course.ejs', { data, assignmentdata, url })
+            }
+          })
+        }
+      })
+    }
+  }
 })
 
 router.post('/createassignment', loggedin, async (req, res) => {
@@ -112,13 +122,15 @@ router.post('/createassignment', loggedin, async (req, res) => {
       });
       newassignment.save((err, data) => {
         if (err) return console.log(err);
-        console.log(newassignment.assignmentname + newassignment.id + " saved to database.  FINALLY.");
-        console.log(data);
-        coursedata.assignments.push(data.id);
-        coursedata.save((err, success) => {
-          if (err) console.log(err);
-          else res.redirect('/course/' + req.body.inputcourseid + '/assignment/' + data.id);
-        })
+        else {
+          console.log(newassignment.assignmentname + newassignment.id + " saved to database.  FINALLY.");
+          console.log(data);
+          coursedata.assignments.push(data.id);
+          coursedata.save((err, success) => {
+            if (err) console.log(err);
+            else res.redirect('/course/' + req.body.inputcourseid + '/assignment/' + data.id);
+          })
+        }
       });
     }
   })
@@ -126,10 +138,10 @@ router.post('/createassignment', loggedin, async (req, res) => {
 
 router.get('/course/:courseid/assignment/:id', loggedin, (req, res) => {
   Course.findById(req.params.courseid, (err, coursedata) => {
-    if (err) console.log("Course ID:", err)
+    if (!coursedata) res.send("Course does not exist.");
     else {
       Assignment.findById(req.params.id, (err, data) => {
-        if (err) console.log("course/id/assignment/:id:", err);
+        if (!data) res.send("Assignment does not exist.");
         else {
           console.log(data);
           res.render('assignment.ejs', { accounttype: req.user.accounttype, data })

@@ -20,20 +20,20 @@ This is the editcourse page of our website. It provides basic html layouts of wh
     <%- include('./partials/header') %>
     </header>
 
-    <form id = "editform">
+    <form action="/editcourse" id="editform" method="POST">
       <h1>Edit Course</h1>
       <ul class="no-bullets">
         <% data.forEach((course) => { %>
           <li>
-            <input type="radio" id=<%=course.id%> name="coursechoice" value="Course1" required />
+            <input type="radio" id=<%=course.id%> name="coursechoice" value=<%=course.id%> required />
             <label for=<%=course.id%> class="courselabels"><%= course.coursename %></label>
           </li>
         <% }) %>
       </ul>
 
       <div class="buttons">
-        <input type="button" id="editbtt" name="Edit" value="Edit" />
-        <input type="button" id="deletebtt" name="Delete" value="Delete" />
+        <input type="submit" id="editbtt" name="bttn" value="Edit" />
+        <input type="submit" id="deletebtt" name="bttn" value="Delete" />
       </div>
     </form>
   </body>

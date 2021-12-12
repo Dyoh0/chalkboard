@@ -20,9 +20,7 @@ to send an enroll request, and a navbar showing assignment links for enrolled st
     <%- include('./partials/header') %>
     </header>
 
-    <% if (data.coursename) { %> 
-      <h1><%= data.coursename %></h1>
-    <% } %>
+    <h1><%= data.coursename %></h1>
     </p>
     <main>
       <% if (data.assignments && data.assignments.length != 0) { %> 
