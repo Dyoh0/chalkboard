@@ -25,7 +25,7 @@ to send an enroll request, and a navbar showing assignment links for enrolled st
     <% } %>
     </p>
     <main>
-      <% if (data.assignments.length != 0) { %> 
+      <% if (data.assignments && data.assignments.length != 0) { %> 
         <nav id="assignmentlist">
           <h2>Assignments</h2>
           <ul id="assignments">

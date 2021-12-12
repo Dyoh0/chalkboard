@@ -40,12 +40,12 @@ router.get('/course/:id', loggedin, (req, res) => {
     if (err) console.log("course/:id:", err);
     else {
       if (req.user.accounttype == "Student") {
-        Course.find({ _id: req.params.id, students: req.user.id }, (err, notexist) => {
-          if (notexist == "") {
+        Course.find({ _id: req.params.id, students: req.user.id }, (err, enrolled) => {
+          if (enrolled == "") {
             res.render('course.ejs', {
               data: {
-                // TODO: Finish this part to display title+desc but no assignments
-                coursedesc: "You are not enrolled yet."
+                coursename: data.coursename,
+                coursedesc: data.coursedesc
               }
             })
           }
@@ -61,18 +61,29 @@ router.get('/course/:id', loggedin, (req, res) => {
         })
       }
       else {
-        // TODO: Search course DB's creator and instructors field.  if true:
-        console.log("Youre a wizard, Harry.");
-        const url = req.url;
-        Assignment.find({ courseid: req.params.id }, (err, assignmentdata) => {
-          if (err) console.log(err);
+        // TODO: Search course DB's creator and instructors field with req.user.id.  if true:
+        Course.find({ courseid: req.params.id, creatorid: req.user.id }, (err, assigned) => {
+          if (assigned == "") {
+            res.render('course.ejs', {
+              data: {
+                coursename: data.coursename,
+                coursedesc: data.coursedesc
+              }
+            })
+          }
           else {
-            res.render('course.ejs', { data, assignmentdata, url })
+            console.log("Youre a wizard, Harry.");
+            const url = req.url;
+            Assignment.find({ courseid: req.params.id }, (err, assignmentdata) => {
+              if (err) console.log(err);
+              else {
+                res.render('course.ejs', { data, assignmentdata, url })
+              }
+            })
           }
         })
       }
     }
-
   })
 })
 

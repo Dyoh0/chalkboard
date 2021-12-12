@@ -70,34 +70,6 @@ app.get('/', loggedin, (req, res) => {
 const adminrouter = require('./routes/adminpage')
 app.use('/', adminrouter)
 
-// TODO: Only course creator and assigned instructors can see answer key. do DB search; search for req.user.id in creator or instructors array in the course schema through assignment's course FK. have true-false check in EJS page.  if true, render the answer key.  if false, nah.
-app.get('/assignment', loggedin, (req, res) => {
-  res.render('assignment.ejs', {
-    accounttype: req.user.accounttype,
-    data: {
-      assignmentname: "Oh yeah",
-      assignmentdesc: "This is also currently broken as Im working on the assignment DB functionality",
-      questions: ["Batman", "Superman", "Wonder Woman"],
-      answers: ["Bruce Wayne", "Klark Cent", "Diana Prince"]
-    }
-  });
-})
-
-// app.get('/course', loggedin, (req, res) => {
-//   const url = req.url;
-//   const assignmentdata = {
-//     assignments: ["Ugh"]
-//   };
-//   res.render('course.ejs', {
-//     data: {
-//       coursename: "Uh,",
-//       coursedesc: "So I realized that, because I added the createcourse functionality, the link you clicked on is now kinda broken.  I'll fix that later.",
-//       assignments: ["Nothing here", "lol"]
-//     }
-//     , url, assignmentdata
-//   });
-// })
-
 app.get('/searchresults', loggedin, (req, res) => {
   res.render('searchresults.ejs');
 })
