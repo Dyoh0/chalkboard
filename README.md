@@ -54,9 +54,10 @@ An instructor is able to edit any course he or she is in charge of.They are allo
 **Link - https://chalkboard.danielyoh.repl.co/editcourse**
 
 
-## Grading Page
-An instructor is able to view all the submits of assignments that are made by the students. The instructor is able to mark them correct or incorrect and give student a grade that's most fit. Also, the instructor is able to leave a feedback/comment along with the grade.     
+## Gradelist and Grading Page
+An instructor is able to view all the submits of assignments that are made by the students on the gradelist page, which can take the instructor to each individual submission through the Grade button. The instructor is able to mark them correct or incorrect and give student a grade that's most fit. Also, the instructor is able to leave a feedback/comment along with the grade.     
 **Link - https://chalkboard.danielyoh.repl.co/gradelist**
+![gradingpage](https://github.com/Dyoh0/chalkboard/blob/main/designs/grading.png?raw=true)
 
 
 ## Index Page
