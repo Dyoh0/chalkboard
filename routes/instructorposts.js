@@ -5,6 +5,7 @@
 
 const express = require('express')
 const router = express.Router()
+const Person = require("../database.js").PersonModel;
 const Course = require("../database.js").CourseModel;
 const Search = require("../database.js").SearchModel;
 const Assignment = require("../database.js").AssignmentModel;
@@ -56,7 +57,8 @@ router.get('/course/:id', loggedin, async (req, res) => {
           res.render('course.ejs', {
             data: {
               coursename: data.coursename,
-              coursedesc: data.coursedesc
+              coursedesc: data.coursedesc,
+              id: data.id
             }
           })
         }
@@ -83,7 +85,8 @@ router.get('/course/:id', loggedin, async (req, res) => {
           res.render('course.ejs', {
             data: {
               coursename: data.coursename,
-              coursedesc: data.coursedesc
+              coursedesc: data.coursedesc,
+              id: data.id
             }
           })
         }
@@ -151,6 +154,17 @@ router.get('/course/:courseid/assignment/:id', loggedin, (req, res) => {
   })
 })
 
+router.post('/course/:id', loggedin, async (req, res) => {
+  Course.findById(req.params.id, async (err, coursedata) => {
+    if (!coursedata) res.send("An error has occurred.");
+    else {
+      const updateuser = await Person.updateOne({ _id: req.user.id }, { $addToSet: { enrolledcourses: [req.params.id] } });
+      const updatecourse = await Course.updateOne({ _id: req.params.id }, { $addToSet: { students: [req.user.id] } })
+      res.redirect('/course/' + req.params.id);
+    }
+  })
+})
+
 router.post('/searchresults', loggedin, (req, res) => {
   const searchterm = new Search({
     searchterm: req.body.searchterm
@@ -163,6 +177,11 @@ router.post('/searchresults', loggedin, (req, res) => {
   res.send("Search successfully saved to DB.")
   // res.redirect('/searchresults')
 })
+
+// router.post('/studentroster', loggedin, (req, res) => {
+//   const data = Course.findById(req.body.course[0])
+//   res.render('studentroster.ejs', {data});
+// })
 
 function loggedin(req, res, next) {
   if (req.isAuthenticated()) {

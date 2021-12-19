@@ -60,20 +60,6 @@ This is the admin page of our website. It provides basic html layouts of what ad
           <th>Instructors</th>
           <th>Students</th>
         </tr>
-        <tr>
-          <td>CS 355</td>
-          <td>Minjae Kim</td>
-          <td>Minjae Kim</td>
-          <td>123456789</td>
-          <td>Daniel Yoh</td>
-        </tr>
-        <tr>
-          <td>CS 355</td>
-          <td>Daniel Yoh</td>
-          <td>Daniel Yoh</td>
-          <td>234567890</td>
-          <td>Minjae Kim</td>
-        </tr>
 
         <% coursedata.forEach((course) => { %>
           <tr>
@@ -81,7 +67,7 @@ This is the admin page of our website. It provides basic html layouts of what ad
             <td><%= course.coursename%></td>
             <td> <%= course.creatorname%> </td>
             <td><%= course.instructors %></td>
-            <td>Not implemented yet</td>
+            <td><%= course.students %></td>
           </tr>
         <% }) %>
 

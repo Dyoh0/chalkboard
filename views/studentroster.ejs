@@ -21,39 +21,18 @@ This is the studentroster page of our website. It provides basic html layouts of
 
     <div class="center1">
       <h1>Student Roster</h1>
-
-      <label for="course">Select course:</label>
-      <select name="course" id="course">
-        <option value="volvo">CSCI355</option>
-      </select>
-      <button type="button">View</button>
-
-      <h2>
-        Displaying roster for course
-        <span id="coursename">CSCI355</span>
-        :
-      </h2>
       <div class="roster">
         <table class="center">
           <tr>
-            <th>Last Name</th>
-            <th>First Name</th>
+            <th>Course ID</th>
+            <th>Student ID</th>
           </tr>
           <tr>
-            <td>Jones</td>
-            <td>Alex</td>
-          </tr>
-          <tr>
-            <td>Johnson</td>
-            <td>Alex</td>
-          </tr>
-          <tr>
-            <td>Doe</td>
-            <td>John</td>
-          </tr>
-          <tr>
-            <td>Smith</td>
-            <td>Michael</td>
+            <% data.forEach((course) => { %>
+              <td><%= course.coursename%></td>
+              <td><%= course.students%></td>
+            </tr>
+            <% }) %>
           </tr>
         </table>
       </div>

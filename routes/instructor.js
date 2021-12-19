@@ -5,6 +5,7 @@
 
 const express = require('express')
 const router = express.Router()
+const Person = require("../database.js").PersonModel;
 const Course = require("../database.js").CourseModel;
 
 router.get('/createassignment', loggedin, instructorcheck, (req, res) => {
@@ -32,8 +33,10 @@ router.get('/acceptreject', loggedin, instructorcheck, (req, res) => {
   res.render('acceptreject.ejs');
 })
 
-router.get('/studentroster', loggedin, instructorcheck, (req, res) => {
-  res.render('studentroster.ejs');
+router.get('/studentroster', loggedin, instructorcheck, async (req, res) => {
+  const data = await Course.find({ creatorid: req.user.id });
+  console.log(data)
+  res.render('studentroster.ejs', { data });
 })
 
 router.get('/selectedcourse', loggedin, instructorcheck, (req, res) => {
