@@ -49,7 +49,18 @@ const searchSchema = new Schema({
 
 let Search = mongoose.model('Search', searchSchema);
 
+const submassgnSchema = new Schema({
+  answers: [String],
+  courseid: { type: Schema.Types.ObjectId, required: true },
+  studentid: { type: Schema.Types.ObjectId, required: true },
+  assid:  { type: Schema.Types.ObjectId, required: true },
+  creatorid:  { type: Schema.Types.ObjectId, required: true }
+});
+
+let SubmAssgn = mongoose.model('SubmAssgn', submassgnSchema);
+
 exports.PersonModel = Person;
 exports.CourseModel = Course;
 exports.SearchModel = Search;
 exports.AssignmentModel = Assignment;
+exports.SubmAssgnModel = SubmAssgn;

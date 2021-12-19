@@ -36,12 +36,12 @@ to send an enroll request, and a navbar showing assignment links for enrolled st
           </ul>
         </nav>
       <% } %>
-      <p class="coursedesc">
-        <%= data.coursedesc %>
-      </p>
+      <p class="coursedesc"><%= data.coursedesc %></p>
     </main>
-    <form action="/course/<%= data.id %>" method="POST">
-      <input type="submit" name=<%= data.id %> value="Enroll" type="button" id="enrollbttn">
-    </form>
+    <% if (!enrolled) { %> 
+      <form action="/course/<%= data.id %>" method="POST">
+        <input type="submit" name=<%= data.id %> value="Enroll" type="button" id="enrollbttn">
+      </form>
+    <% } %>
   </body>
 </html>

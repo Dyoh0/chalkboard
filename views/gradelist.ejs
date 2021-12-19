@@ -24,25 +24,24 @@ This is a list of assignments to grade.
       <h1>Instructor Accept/Reject Page</h1>
       <table>
         <tr>
-          <th>Student Name</th>
-          <th>Course</th>
-          <th>Assignment Number</th>
+          <th>Student ID</th>
+          <th>Course ID</th>
+          <th>Assignment ID</th>
           <th>Grading</th>
         </tr>
-        <tr>
-          <td>Minjae Kim</td>
-          <td>CS 355</td>
-          <td>1</td>
-          <td><input type="button" class="button" value="Grade" /></td>
-        </tr>
-        <tr>
-          <td>Daniel Yoh</td>
-          <td>CS 355</td>
-          <td>1</td>
-          <td>
-            <input type="button" class="button" value="Grade" />
-          </td>
-        </tr>
+          <tr>
+            <% assigndata.forEach((assgn) => { %>
+              <% let url = '/course/' + assgn.courseid + '/assignment/' + assgn.assid + '/' + assgn.studentid%>
+              <td><%= assgn.studentid%></td>
+              <td><%= assgn.courseid%></td>
+              <td><%= assgn.assid%></td>
+              <td>
+              <button onclick="window.location='<%= url %>';">Grade</button>
+              </td>
+            </tr>
+            <% }) %>
+          </tr>
+
       </table>
     </div>
   </body>

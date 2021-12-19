@@ -7,6 +7,7 @@ const express = require('express')
 const router = express.Router()
 const Person = require("../database.js").PersonModel;
 const Course = require("../database.js").CourseModel;
+const SubmAssgn = require("../database.js").SubmAssgnModel;
 
 router.get('/createassignment', loggedin, instructorcheck, (req, res) => {
   res.render('createassignment.ejs');
@@ -21,12 +22,10 @@ router.get('/editcourse', loggedin, instructorcheck, async (req, res) => {
   res.render('editcourse.ejs', { data });
 })
 
-router.get('/gradelist', loggedin, instructorcheck, (req, res) => {
-  res.render('gradelist.ejs');
-})
-
-router.get('/grading', loggedin, instructorcheck, (req, res) => {
-  res.render('grading.ejs');
+router.get('/gradelist', loggedin, instructorcheck, async (req, res) => {
+  const assigndata = await SubmAssgn.find({ creatorid: req.user.id })
+  console.log(assigndata)
+  res.render('gradelist.ejs', { assigndata });
 })
 
 router.get('/acceptreject', loggedin, instructorcheck, (req, res) => {

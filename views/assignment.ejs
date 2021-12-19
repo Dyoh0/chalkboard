@@ -24,7 +24,8 @@ assignment and questions and fields for the user to type their answers into.
     <p class="assignmentdesc">
     <%= data.assignmentdesc %>
     </p>
-    <form action="#">
+    <% let formurl = url + '/' + studentid;%>
+    <form action=<%= formurl %> method="POST">
       <div class="questionanswermodule">
         <% data.questions.forEach((quest, index) => { %>
           <% const answ = data.answers[index];%>
@@ -33,8 +34,7 @@ assignment and questions and fields for the user to type their answers into.
             </p>
       
           <label for="answer">Answer:</label>
-          <input type="text" id="answer" name="answer" />
-          <input type="file" id="filesubmit" name="filesubmit" />
+          <input type="text" id="answer" name="answer" required />
           
           <% if (accounttype == "Instructor") { %>
             <p class="questiontext">Answer Key: <%= answ %></p>
@@ -47,8 +47,9 @@ assignment and questions and fields for the user to type their answers into.
       <% }%>
       </div>
 
-      <input type="submit" id="savedraft" name="savedraft" value="Save as Draft" />
-      <input type="submit" id="submit" name="submit" />
+      <% if (studentcheck && !assigncheck) { %>
+        <input type="submit" id="submit" name="submit" />
+      <% } %>
     </form>
   </body>
 </html>

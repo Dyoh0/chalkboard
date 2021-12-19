@@ -9,6 +9,7 @@ const Person = require("../database.js").PersonModel;
 const Course = require("../database.js").CourseModel;
 const Search = require("../database.js").SearchModel;
 const Assignment = require("../database.js").AssignmentModel;
+const SubmAssgn = require("../database.js").SubmAssgnModel;
 
 router.use(express.static(__dirname + '../public'));
 
@@ -49,6 +50,7 @@ router.post('/createcourse', loggedin, async (req, res) => {
 
 router.get('/course/:id', loggedin, async (req, res) => {
   let data = await Course.findById(req.params.id);
+  let enrolled = false;
   if (!data) res.send("Course does not exist.");
   else {
     if (req.user.accounttype == "Student") {
@@ -63,11 +65,12 @@ router.get('/course/:id', loggedin, async (req, res) => {
           })
         }
         else {
+          enrolled = true;
           const url = req.url;
           Assignment.find({ courseid: req.params.id }, (err, assignmentdata) => {
             if (!assignmentdata) res.send("Assignment doesn't exist.");
             else {
-              res.render('course.ejs', { data, assignmentdata, url })
+              res.render('course.ejs', { data, assignmentdata, url, enrolled })
             }
           })
         }
@@ -139,15 +142,29 @@ router.post('/createassignment', loggedin, async (req, res) => {
   })
 })
 
-router.get('/course/:courseid/assignment/:id', loggedin, (req, res) => {
+router.get('/course/:courseid/assignment/:id', loggedin, async (req, res) => {
+  // Only enrolled students can submit assignments
+  let studentcheck = false;
+  let studentid;
+  let url = req.url;
+  let assigncheck = await SubmAssgn.find({ assid: req.params.id, studentid: req.user.id });
+  // If student already submitted assignment, 'submit' button disappears.
+  console.log("assngcheck:", assigncheck, "/n")
+  if (assigncheck.length != 0) assigncheck = true;
+  else assigncheck = false;
+  console.log("assngcheck:", assigncheck, "/n")
   Course.findById(req.params.courseid, (err, coursedata) => {
     if (!coursedata) res.send("Course does not exist.");
     else {
       Assignment.findById(req.params.id, (err, data) => {
         if (!data) res.send("Assignment does not exist.");
         else {
+          if (coursedata.students.includes(req.user.id)) {
+            studentcheck = true;
+            studentid = req.user.id;
+          }
           console.log(data);
-          res.render('assignment.ejs', { accounttype: req.user.accounttype, data })
+          res.render('assignment.ejs', { accounttype: req.user.accounttype, data, studentcheck, studentid, url, assigncheck })
         }
       })
     }
@@ -158,36 +175,53 @@ router.post('/course/:id', loggedin, async (req, res) => {
   Course.findById(req.params.id, async (err, coursedata) => {
     if (!coursedata) res.send("An error has occurred.");
     else {
-      const updateuser = await Person.updateOne({ _id: req.user.id }, { $addToSet: { enrolledcourses: [req.params.id] } });
-      const updatecourse = await Course.updateOne({ _id: req.params.id }, { $addToSet: { students: [req.user.id] } })
-      res.redirect('/course/' + req.params.id);
+      if (req.user.id == coursedata.creatorid) {
+        res.send("Enrolling in a course you signed up for sounds like a bad idea.")
+      }
+      else {
+        const updateuser = await Person.updateOne({ _id: req.user.id }, { $addToSet: { enrolledcourses: [req.params.id] } });
+        const updatecourse = await Course.updateOne({ _id: req.params.id }, { $addToSet: { students: [req.user.id] } })
+        res.redirect('/course/' + req.params.id);
+      }
     }
   })
 })
 
-router.post('/searchresults', loggedin, (req, res) => {
-  const searchterm = new Search({
-    searchterm: req.body.searchterm
+router.post('/course/:courseid/assignment/:assid/:id', loggedin, async (req, res) => {
+  let instrucid = await Course.findById(req.params.courseid);
+  let submitted = new SubmAssgn({
+    answers: req.body.answer,
+    courseid: req.params.courseid,
+    studentid: req.params.id,
+    assid: req.params.assid,
+    creatorid: instrucid.creatorid
   });
-  searchterm.save((err, data) => {
-    if (err) return console.log(err);
-    console.log(searchterm.coursename + searchterm.id + " saved to database.  FINALLY.");
+
+  submitted.save((err, data) => {
+    if (err) return err;
     console.log(data)
   });
-  res.send("Search successfully saved to DB.")
-  // res.redirect('/searchresults')
-})
+  res.redirect(req.url);
+});
 
-// router.post('/studentroster', loggedin, (req, res) => {
-//   const data = Course.findById(req.body.course[0])
-//   res.render('studentroster.ejs', {data});
-// })
+// Gets instructor's view of student answers
+router.get('/course/:courseid/assignment/:assid/:id', loggedin, instructorcheck, async (req, res) => {
+  let data = await Assignment.findById(req.params.assid)
+  let stanswers = await SubmAssgn.find({ assid: req.params.assid, studentid: req.params.id });  
+  let name = await Person.findById(req.params.id);
+  res.render('grading.ejs', { data, stanswers, name })
+})
 
 function loggedin(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
   res.redirect('/login');
+}
+
+function instructorcheck(req, res, next) {
+  if (req.user.accounttype != "Instructor") return res.redirect('/')
+  next();
 }
 
 module.exports = router

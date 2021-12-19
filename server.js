@@ -63,10 +63,24 @@ passport.use(new localstrategy({
   });
 }));
 
-app.get('/', loggedin, (req, res) => {
+app.get('/', loggedin, async (req, res) => {
+  let courselist;
+  let createdcourses;
+  let instruccheck = 0;
   if (req.user.accounttype == "Admin") res.redirect('/adminpage')
-  else res.render('index.ejs', { accounttype: req.user.accounttype });
-  // res.render('index.ejs', { name: "Whee" });
+  else {
+    if (req.user.accounttype == "Instructor") {
+      createdcourses = await Course.find({ creatorid: req.user.id });
+      instruccheck = 1;
+    }
+    const userdata = await Person.findById(req.user.id);
+    if (userdata.enrolledcourses.length != 0) {
+      // Get list of courses.
+      courselist = await Course.find({ students: req.user.id });
+      res.render('index.ejs', { accounttype: req.user.accounttype, courselist, createdcourses, instruccheck });
+    }
+    else res.render('index.ejs', { accounttype: req.user.accounttype, courselist, createdcourses, instruccheck });
+  }
 })
 
 const adminrouter = require('./routes/adminpage')
