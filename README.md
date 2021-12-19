@@ -31,13 +31,12 @@ It shows all the information about the student, instructor, courses and the data
 
 ## Assignment Page
 The assignment page shows the assigned work in which the student is supposed to complete. The student is able to write the answer, upload a file and save a draft before sumbitting an answer.      
-**Link - https://chalkboard.danielyoh.repl.co/assignment**
-
+![assignmentpage](https://github.com/Dyoh0/chalkboard/blob/main/designs/assignmentpage.png?raw=true)
 
 ## Course Page
 The course page shows the description of the course and gives an option to apply for enrolling. Ultimately, it will be upto instructor to accept or reject the student via Accept Reject Page.
 When accepted, the student is able to see all the assigned work within the course.      
-**Link - https://chalkboard.danielyoh.repl.co/course**
+![coursepage](https://github.com/Dyoh0/chalkboard/blob/main/designs/coursepage.png?raw=true)
 
 
 ## Create Assignment Page
@@ -77,7 +76,7 @@ Search result page allows for searching of courses that are available. Multiple 
 
 ## Selected Course Page
 Selected course page is available to instructor and admin where editting of course name, course description and course instructors are allowed.      
-**Link - https://chalkboard.danielyoh.repl.co/course**
+![coursepage](https://github.com/Dyoh0/chalkboard/blob/main/designs/coursepage.png?raw=true)
 
 
 ## Signup Page
