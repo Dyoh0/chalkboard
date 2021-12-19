@@ -16,8 +16,7 @@ router.get('/createcourse', loggedin, instructorcheck, (req, res) => {
 })
 
 router.get('/editcourse', loggedin, instructorcheck, async (req, res) => {
-  const courselist = await Course.find({ creator: req.user.id })
-  const data = courselist
+  const data = await Course.find({ creator: req.user.id })
   res.render('editcourse.ejs', { data });
 })
 
