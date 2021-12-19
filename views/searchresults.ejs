@@ -13,6 +13,7 @@ will display results matching their search string.
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../CSS/searchresults.css" />
     <link rel="stylesheet" href="../CSS/header.css" />
+    <script src="/JS/search.js"></script>
     <title>Search Results</title>
   </head>
 
@@ -22,40 +23,35 @@ will display results matching their search string.
     </header>
 
     <div id="searchbar">
-      <form action="/searchresults" method="POST">
       <img src="../img/magnifying-glass-ga7dc5fc0e_640.jpg" alt="A magnifying glass" width="25" />
         <input type="text" id="searchterm" name="searchterm" placeholder="Search for Courses" />
-        <button type="submit" name="search" value="searchbutton">Search</button>
-      </form>
+        <button type="button" id="search" name="search" value="searchbutton">Search</button>
     </div>
 
     <main>
+    <% if (data) { %> 
       <h1>
         Search results for:
-        <span id="spansearchterm">Physics</span>
+        <span id="spansearchterm"><%= search%></span>
       </h1>
-      <form>
-        <ul>
-          <li class="list">
-            <div class="classchoice">
-              <input type="checkbox" id="courseresult1" name="courseresult1" value="courseresult1" />
-              <label for="courseresult1">
-                Physics I
-                <span class="classdesc">Introductory course on basic physics.</span>
-              </label>
-            </div>
+        <ul class="list">
+          <% data.forEach((result) => { %>
 
-            <div class="classchoice">
-              <input type="checkbox" id="courseresult2" name="courseresult2" value="courseresult2" />
-              <label for="courseresult2">
-                Astrophysics
-                <span class="classdesc">Course on the physics of space.</span>
-              </label>
-            </div>
-          </li>
+            <li class="classchoice">
+              <p>
+                <% let link = "/course/" + result.id %>
+                <a href = <%= link %> >
+                <%= result.coursename %> </a> - 
+                <span class="classdesc">
+                <% if(result.coursedesc.length > 90) var result = result.coursedesc.substring(0,90) + "...";%>
+                <%= result %>
+                </span>
+              </p>
+            </li>
+
+          <% }) %>
         </ul>
-        <button type="submit" class="submitbutton" value="enrolledcourses">Enroll</button>
-      </form>
+    <% } %>
     </main>
   </body>
 </html>

@@ -108,19 +108,11 @@ This is the admin page of our website. It provides basic html layouts of what ad
           <th>User Search Queries</th>
           <th>Results</th>
         </tr>
-        <tr>
-          <td>Math</td>
-          <td>Math</td>
-        </tr>
-        <tr>
-          <td>Bio</td>
-          <td>Bio</td>
-        </tr>
 
         <% searchdata.forEach((search) => { %>
           <tr>
             <td><%= search.searchterm%></td>
-            <td> Not implemented yet </td>
+            <td><%= search.searchresult%> </td>
           </tr>
         <% }) %>
 

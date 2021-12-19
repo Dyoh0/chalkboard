@@ -8,7 +8,7 @@ ul {
   margin: 1%;
 }
 
-form {
+p {
   text-align: left;
 }
 
@@ -30,18 +30,7 @@ h1 {
   font-size: 1.2em;
 }
 
-.submitbutton {
-  font-size: 1.2em;
-  padding: 0.5em;
-  margin-left: 10%;
-}
-
 @media only screen and (max-width: 555px) {
-  .submitbutton {
-    margin: auto;
-    margin-left: 30%;
-  }
-
   .classchoice {
     font-size: 1em;
   }
