@@ -76,7 +76,7 @@ Search result page allows for searching of courses that are available. Multiple 
 
 ## Selected Course Page
 Selected course page is available to instructor and admin where editting of course name, course description and course instructors are allowed.      
-![coursepage](https://github.com/Dyoh0/chalkboard/blob/main/designs/coursepage.png?raw=true)
+![selectedcoursepage](https://github.com/Dyoh0/chalkboard/blob/main/designs/selectedcoursepage.png?raw=true)
 
 
 ## Signup Page
