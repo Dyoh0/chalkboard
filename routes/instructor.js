@@ -24,7 +24,6 @@ router.get('/editcourse', loggedin, instructorcheck, async (req, res) => {
 
 router.get('/gradelist', loggedin, instructorcheck, async (req, res) => {
   const assigndata = await SubmAssgn.find({ creatorid: req.user.id })
-  console.log(assigndata)
   res.render('gradelist.ejs', { assigndata });
 })
 

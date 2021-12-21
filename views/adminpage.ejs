@@ -102,7 +102,7 @@ This is the admin page of our website. It provides basic html layouts of what ad
     </div>
 
     <div class="admintable">
-      <p>Database Table</p>
+      <p>Search Table</p>
       <table>
         <tr>
           <th>User Search Queries</th>
@@ -116,6 +116,58 @@ This is the admin page of our website. It provides basic html layouts of what ad
           </tr>
         <% }) %>
 
+      </table>
+    </div>
+    
+    <div class="admintable">
+      <p>Submitted Assignments Table</p>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Answers</th>
+          <th>Course ID</th>
+          <th>Student ID</th>
+          <th>Assignment ID</th>
+          <th>Creator ID</th>
+        </tr>
+        <% submdata.forEach((search) => { %>
+          <tr>
+            <td><%= search._id%></td>
+            <td><%= search.answers%> </td>
+            <td><%= search.courseid%> </td>
+            <td><%= search.studentid%> </td>
+            <td><%= search.assid%> </td>
+            <td><%= search.creatorid%> </td>
+          </tr>
+        <% }) %>
+      </table>
+    </div>
+
+    <div class="admintable">
+      <p>Graded Assignments Table</p>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Correct/Incorrect</th>
+          <th>Feedback</th>
+          <th>Grade</th>
+          <th>Course ID</th>
+          <th>Student ID</th>
+          <th>Assignment ID</th>
+          <th>Creator ID</th>
+        </tr>
+        <% gradedata.forEach((grade) => { %>
+          <tr>
+            <td><%= grade._id%></td>
+            <td><%= JSON.stringify(grade.corrects)%></td>
+            <td><%= grade.feedback%></td>
+            <td><%= grade.grade%></td>
+            <td><%= grade.courseid%> </td>
+            <td><%= grade.studentid%> </td>
+            <td><%= grade.assid%> </td>
+            <td><%= grade.creatorid%> </td>
+          </tr>
+        <% }) %>
       </table>
     </div>
   </body>

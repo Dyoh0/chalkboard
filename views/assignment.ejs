@@ -32,10 +32,14 @@ assignment and questions and fields for the user to type their answers into.
             <p class="questiontext">Question:
               <span class="question"><%= quest %></span>
             </p>
-      
+          <% if (alreadygraded) {%>
+            <p>Answer: <%= grades.corrects[index] %></p>
+          <% } else if (studentcheck && assigncheck && !alreadygraded) { %>
+            <p>Answer: <%= assigncheck.answers[index] %> </p>
+          <% } else if (accounttype != "Instructor") { %>
           <label for="answer">Answer:</label>
           <input type="text" id="answer" name="answer" required />
-          
+          <% } %>
           <% if (accounttype == "Instructor") { %>
             <p class="questiontext">Answer Key: <%= answ %></p>
           <% } %>
@@ -47,9 +51,15 @@ assignment and questions and fields for the user to type their answers into.
       <% }%>
       </div>
 
-      <% if (studentcheck && !assigncheck) { %>
+      <% if (studentcheck && !assigncheck && !alreadygraded) { %>
         <input type="submit" id="submit" name="submit" />
-      <% } %>
+      <% }  else if (studentcheck && assigncheck && !alreadygraded) { %>
+        <p>Submitted</p>
+      <% } else if (alreadygraded) { %>
+      <p>Feedback: <%= grades.feedback%></p>
+      <p>Grade: <%= grades.grade%></p>
+      <% }%>
+
     </form>
   </body>
 </html>

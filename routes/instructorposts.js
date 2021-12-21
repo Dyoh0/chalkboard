@@ -10,6 +10,7 @@ const Course = require("../database.js").CourseModel;
 const Search = require("../database.js").SearchModel;
 const Assignment = require("../database.js").AssignmentModel;
 const SubmAssgn = require("../database.js").SubmAssgnModel;
+const Grades = require("../database.js").GradesModel;
 
 router.use(express.static(__dirname + '../public'));
 
@@ -99,7 +100,7 @@ router.get('/course/:id', loggedin, async (req, res) => {
           Assignment.find({ courseid: req.params.id }, (err, assignmentdata) => {
             if (err) console.log(err);
             else {
-              res.render('course.ejs', { data, assignmentdata, url })
+              res.render('course.ejs', { data, assignmentdata, url, enrolled })
             }
           })
         }
@@ -147,12 +148,17 @@ router.get('/course/:courseid/assignment/:id', loggedin, async (req, res) => {
   let studentcheck = false;
   let studentid;
   let url = req.url;
-  let assigncheck = await SubmAssgn.find({ assid: req.params.id, studentid: req.user.id });
   // If student already submitted assignment, 'submit' button disappears.
-  console.log("assngcheck:", assigncheck, "/n")
-  if (assigncheck.length != 0) assigncheck = true;
-  else assigncheck = false;
-  console.log("assngcheck:", assigncheck, "/n")
+  let assigncheck = await SubmAssgn.findOne({ assid: req.params.id, studentid: req.user.id });
+  if (assigncheck == null) assigncheck = false;
+  let alreadygraded;
+  let grades;
+  if (req.user.accounttype == 'Student') {
+    grades = await Grades.findOne({ courseid: req.params.courseid, assid: req.params.id, studentid: req.user.id })
+    if (grades != null) alreadygraded = true;
+    else alreadygraded = false;
+  }
+  console.log(grades, "\n", alreadygraded);
   Course.findById(req.params.courseid, (err, coursedata) => {
     if (!coursedata) res.send("Course does not exist.");
     else {
@@ -164,7 +170,7 @@ router.get('/course/:courseid/assignment/:id', loggedin, async (req, res) => {
             studentid = req.user.id;
           }
           console.log(data);
-          res.render('assignment.ejs', { accounttype: req.user.accounttype, data, studentcheck, studentid, url, assigncheck })
+          res.render('assignment.ejs', { accounttype: req.user.accounttype, data, studentcheck, studentid, url, assigncheck, alreadygraded, grades })
         }
       })
     }
@@ -201,16 +207,43 @@ router.post('/course/:courseid/assignment/:assid/:id', loggedin, async (req, res
     if (err) return err;
     console.log(data)
   });
-  res.redirect(req.url);
+  let url = '/course/' + req.params.courseid + '/assignment/' + req.params.assid + '/';
+  res.redirect(url);
 });
 
 // Gets instructor's view of student answers
 router.get('/course/:courseid/assignment/:assid/:id', loggedin, instructorcheck, async (req, res) => {
   let data = await Assignment.findById(req.params.assid)
-  let stanswers = await SubmAssgn.find({ assid: req.params.assid, studentid: req.params.id });  
+  let stanswers = await SubmAssgn.find({ assid: req.params.assid, studentid: req.params.id });
   let name = await Person.findById(req.params.id);
-  res.render('grading.ejs', { data, stanswers, name })
+  res.render('grading.ejs', { data, stanswers, name, url: req.url })
 })
+
+router.post('/course/:courseid/assignment/:assid/:studid/graded', loggedin, instructorcheck, async (req, res) => {
+  let qstns = req.body;
+  let qstn = Object.assign({}, qstns);
+  delete qstn['feedback'];
+  delete qstn['grade'];
+  delete qstn['submit'];
+  let corrects = JSON.stringify(qstn);
+  corrects = JSON.parse(corrects);
+  let instrucid = await Course.findById(req.params.courseid);
+  let graded = new Grades({
+    "corrects": corrects,
+    "feedback": req.body.feedback,
+    "grade": req.body.grade,
+    "courseid": req.params.courseid,
+    "studentid": req.params.studid,
+    "assid": req.params.assid,
+    "creatorid": instrucid.creatorid
+  });
+  const submid = await SubmAssgn.findOne({ courseid: req.params.courseid, studentid: req.params.studid, assid: req.params.assid });
+  const status = await SubmAssgn.findByIdAndDelete(submid._id);
+  graded.save(async (err, data) => {
+    if (err) return console.log(err);
+    res.redirect('/gradelist');
+  });
+});
 
 function loggedin(req, res, next) {
   if (req.isAuthenticated()) {

@@ -106,6 +106,9 @@ For D2, I did the CSS for some pages and added responsiveness to others.
 ### D3
 For D3, I implemented the signup, login, and logout functionalities.
  
+### D4
+For D4, I continued working on the backend.  Instructors can create courses, invite other instructors, delete courses, and students can enroll in courses and hand in assignments.  Students only see assignments if they're enrolled.
+
 ## Minjae
 
 ### D0

@@ -53,14 +53,27 @@ const submassgnSchema = new Schema({
   answers: [String],
   courseid: { type: Schema.Types.ObjectId, required: true },
   studentid: { type: Schema.Types.ObjectId, required: true },
-  assid:  { type: Schema.Types.ObjectId, required: true },
-  creatorid:  { type: Schema.Types.ObjectId, required: true }
+  assid: { type: Schema.Types.ObjectId, required: true },
+  creatorid: { type: Schema.Types.ObjectId, required: true }
 });
 
 let SubmAssgn = mongoose.model('SubmAssgn', submassgnSchema);
+
+const gradedSchema = new Schema({
+  corrects: { type: Schema.Types.Mixed },
+  feedback: { type: String },
+  grade: { type: Number },
+  courseid: { type: Schema.Types.ObjectId, required: true },
+  studentid: { type: Schema.Types.ObjectId, required: true },
+  assid: { type: Schema.Types.ObjectId, required: true },
+  creatorid: { type: Schema.Types.ObjectId, required: true }
+});
+
+let Grades = mongoose.model('Grades', gradedSchema);
 
 exports.PersonModel = Person;
 exports.CourseModel = Course;
 exports.SearchModel = Search;
 exports.AssignmentModel = Assignment;
 exports.SubmAssgnModel = SubmAssgn;
+exports.GradesModel = Grades;

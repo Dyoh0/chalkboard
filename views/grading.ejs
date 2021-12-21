@@ -21,28 +21,33 @@ This is the grading assignment page of our website, only available to instructor
 
     <h1><%= name.fname %> <%= name.lname %>'s answers for <%= data.assignmentname %></h1>
     <p class="assignmentdesc"><%= data.assignmentdesc %></p>
-    <form action="#">
+    <% url += '/graded' %>
+    <form action=<%=url%> method="POST">
       <div class="questionanswermodule">
         <% let incorrcount = 0;%>
+        <% let corrcount = 0;%>
+        <% let namecount = -1; %>
         <% data.questions.forEach((quest, index) => { %>
-        <% incorrcount++; %>
-        <p class="questiontext">
+          <% incorrcount++; %>
+          <% corrcount--; %>
+          <% namecount++; %>
+          <p class="questiontext">
             Question:
               <span class="question"><%= quest %></span>
-            </p>
+          </p>
       
-            <p class="answertext">Student Answer:
+          <p class="answertext">Student Answer:
             <span class="answer"><%= stanswers[0].answers[index] %>
             </span></p>
             <p class="answerkey">Answer Key: 
             <span class="answerkeyspan"><%= data.answers[index] %></span>
-            </p>
+          </p>
           
           <span class="rightorwrong">
-            <input type="radio" id=<%=stanswers[0].answers[index]%> name="correcttype" value="correct" required />
-            <label for=<%=stanswers[0].answers[index]%> class="correcttypeclass">Correct</label>
+            <input type="radio" id=<%=corrcount%> name=<%= namecount; %> value="correct" required />
+            <label for=<%=corrcount%> class="correcttypeclass">Correct</label>
 
-            <input type="radio" id=<%=incorrcount%> name="correcttype" value="incorrect" required />
+            <input type="radio" id=<%=incorrcount%> name=<%= namecount; %> value="incorrect" required />
             <label for=<%=incorrcount%> class="correcttypeclass">Incorrect</label>
           </span>
         <% }) %>

@@ -9,6 +9,8 @@ const Person = require("../database.js").PersonModel;
 const Course = require("../database.js").CourseModel;
 const Search = require("../database.js").SearchModel;
 const Assignment = require("../database.js").AssignmentModel;
+const SubmAssgn = require("../database.js").SubmAssgnModel;
+const Grades = require("../database.js").GradesModel;
 
 router.get('/adminpage', loggedin, async (req, res) => {
   if (req.user.accounttype != "Admin") res.redirect('/')
@@ -16,11 +18,15 @@ router.get('/adminpage', loggedin, async (req, res) => {
   const searchdata = await Search.find({});
   const coursedata = await Course.find({});
   const assignmentdata = await Assignment.find({});
+  const submdata = await SubmAssgn.find({});
+  const gradedata = await Grades.find({});
   res.render('adminpage.ejs', {
     userdata,
     searchdata,
     coursedata,
-    assignmentdata
+    assignmentdata,
+    submdata,
+    gradedata
   });
 });
 
