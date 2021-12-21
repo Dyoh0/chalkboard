@@ -182,7 +182,7 @@ router.post('/course/:id', loggedin, async (req, res) => {
     if (!coursedata) res.send("An error has occurred.");
     else {
       if (req.user.id == coursedata.creatorid) {
-        res.send("Enrolling in a course you signed up for sounds like a bad idea.")
+        res.send("Enrolling in a course you created sounds like a bad idea.")
       }
       else {
         const updateuser = await Person.updateOne({ _id: req.user.id }, { $addToSet: { enrolledcourses: [req.params.id] } });
