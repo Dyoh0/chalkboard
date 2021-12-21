@@ -89,6 +89,9 @@ This page allows a new user to sign up as either a student or an instructor. Bas
 Student roster page is available to instructor and admin where they are able to view all the students enrolled in a particular class. This page has an option to toggle between different classes with course selections.    
 **Link - https://chalkboard.danielyoh.repl.co/studentroster**
 
+## Differences
+For an instructor, their index page also includes a 'Created Courses' section with accompanying links to make navigation easier.  The search and search results pages were fused together to make things simpler, but there's no checkboxes with an enrollment button since I couldn't figure out how to make that work.  The edit-course, file attachments, reopen, save draft, and accept/reject a student functionalities were not finished on time.  
+
 # Other
 
 ## Daniel
@@ -107,7 +110,7 @@ For D2, I did the CSS for some pages and added responsiveness to others.
 For D3, I implemented the signup, login, and logout functionalities.
  
 ### D4
-For D4, I continued working on the backend.  Instructors can create courses, invite other instructors, delete courses, and students can enroll in courses and hand in assignments.  Students only see assignments if they're enrolled.  Instructors can view assignments that aren't graded yet on the gradelist page, grade them on the grading page, and students can see their grade on the assignment page when it is graded.  Otherwise, it says the student has already submitted.
+For D4, I continued working on the backend.  Instructors can create courses, invite other instructors, delete courses, and students can enroll in courses and hand in assignments.  Students only see assignments if they're enrolled.  Instructors can view assignments that aren't graded yet on the gradelist page, grade them on the grading page, and students can see their grade on the assignment page when it is graded.  Otherwise, it says the student has already submitted.  Also put together the differences from the wireframes.
 
 ## Minjae
 
